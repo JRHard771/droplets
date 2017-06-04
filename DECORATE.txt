@@ -1,0 +1,5 @@
+#include "Decorate/Pools"
+#include "Decorate/Droplets"
+#include "Decorate/Squirts"
+#include "Decorate/Ceiling"
+#include "Decorate/Liquid"

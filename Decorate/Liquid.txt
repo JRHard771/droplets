@@ -1,0 +1,242 @@
+ACTOR BloodFog
+{
+	Radius 4
+	Height 5
+	+NOTELEPORT
+	+CANTLEAVEFLOORPIC
+	+NOBLOCKMAP
+	+MOVEWITHSECTOR
+	+SLIDESONWALLS
+	+NOTONAUTOMAP
+	Gravity 1
+	Speed 0.35
+	MaxStepHeight 1
+	RenderStyle Translucent
+	Alpha 0.2
+	var int user_size;
+	var int user_angle;
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetUserVar("user_size", 655.36)
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SetAngle(random(0.0,359.9))
+		TNT1 A 0 A_SetUserVar("user_angle", angle)
+		goto Pool
+	Pool:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + random(3276.8, 6553.6))
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 2)
+		TNT1 A 0 A_SetAngle(user_angle)
+		TNT1 A 0 A_JumpIf(user_size < 65536.0, "Pool")
+		goto Done
+	Done:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_FadeOut(0.001, true)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + random(819.2, 1638.4))
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 2)
+		TNT1 A 0 A_SetAngle(user_angle)
+		Loop
+	}
+}
+
+ACTOR DecoFog : BloodFog
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetUserVar("user_size", 655.36)
+		TNT1 A 0 A_SetAngle(random(0.0,359.9))
+		TNT1 A 0 A_SetUserVar("user_angle", angle)
+		goto Pool
+	Pool:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + 6553.6)
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 2)
+		TNT1 A 0 A_SetAngle(user_angle)
+		TNT1 A 0 A_JumpIf(user_size < 65536.0, "Pool")
+		goto Done
+	Done:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_FadeOut(0.002, true)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + 819.2)
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 2)
+		TNT1 A 0 A_SetAngle(user_angle)
+		Loop
+	}
+}
+
+ACTOR BloodFog2 : BloodFog
+{
+	Alpha 0.133
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetUserVar("user_size", 327.68)
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SetAngle(random(0.0,359.9))
+		TNT1 A 0 A_SetUserVar("user_angle", angle)
+		goto Pool
+	Pool:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + random(1638.4, 3276.8))
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 4)
+		TNT1 A 0 A_SetAngle(user_angle)
+		TNT1 A 0 A_JumpIf(user_size < 32768.0, "Pool")
+		goto Done
+	Done:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_FadeOut(0.0005, true)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + random(409.6, 819.2))
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 4)
+		TNT1 A 0 A_SetAngle(user_angle)
+		Loop
+	}
+}
+
+ACTOR DecoFog2 : BloodFog
+{
+	Alpha 0.133
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetUserVar("user_size", 327.68)
+		TNT1 A 0 A_SetAngle(random(0.0,359.9))
+		TNT1 A 0 A_SetUserVar("user_angle", angle)
+		goto Pool
+	Pool:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + 3276.8)
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 4)
+		TNT1 A 0 A_SetAngle(user_angle)
+		TNT1 A 0 A_JumpIf(user_size < 32768.0, "Pool")
+		goto Done
+	Done:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_FadeOut(0.001, true)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + 409.6)
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 4)
+		TNT1 A 0 A_SetAngle(user_angle)
+		Loop
+	}
+}
+
+ACTOR BloodFog3 : BloodFog
+{
+	Alpha 0.067
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetUserVar("user_size", 163.84)
+		TNT1 A 0 A_QueueCorpse
+		TNT1 A 0 A_SetAngle(random(0.0,359.9))
+		TNT1 A 0 A_SetUserVar("user_angle", angle)
+		goto Pool
+	Pool:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + random(819.2, 1638.4))
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 6)
+		TNT1 A 0 A_SetAngle(user_angle)
+		TNT1 A 0 A_JumpIf(user_size < 16384.0, "Pool")
+		goto Done
+	Done:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_FadeOut(0.00025, true)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + random(409.6, 819.2))
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 6)
+		TNT1 A 0 A_SetAngle(user_angle)
+		Loop
+	}
+}
+
+ACTOR DecoFog3 : BloodFog
+{
+	Alpha 0.067
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetUserVar("user_size", 163.84)
+		TNT1 A 0 A_SetAngle(random(0.0,359.9))
+		TNT1 A 0 A_SetUserVar("user_angle", angle)
+		goto Pool
+	Pool:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + 1638.4)
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 6)
+		TNT1 A 0 A_SetAngle(user_angle)
+		TNT1 A 0 A_JumpIf(user_size < 16384.0, "Pool")
+		goto Done
+	Done:
+		BFOG A 3 A_SetScale(user_size/65536.0, 1.0)
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_FadeOut(0.001, true)
+		TNT1 A 0 A_SetUserVar("user_size", user_size + 409.6)
+		TNT1 A 0 A_SetUserVar("user_angle", user_angle - 6)
+		TNT1 A 0 A_SetAngle(user_angle)
+		Loop
+	}
+}
+
+ACTOR UWBloodFog
+{
+	Radius 4
+	Height 5
+	+FORCEXYBILLBOARD
+	+NOTELEPORT
+	+NOBLOCKMAP
+	+MOVEWITHSECTOR
+	+SLIDESONWALLS
+	+NOTONAUTOMAP
+	+NOGRAVITY
+	Speed 0.35
+	Scale 0.25
+	MaxStepHeight 1
+	RenderStyle Translucent
+	Alpha 1.0
+	States
+	{
+	Spawn:
+		HITB A 1 NoDelay A_ChangeVelocity(frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(-2.0,2.0))
+		HITB A 1 A_SetScale(scalex + 0.05)
+		HITB B 1
+		HITB B 1 A_SetScale(scalex + 0.05)
+		HITB C 1
+		HITB C 2 A_SetScale(scalex + 0.05)
+		HITB D 2
+		HITB D 2 A_SetScale(scalex + 0.05)
+		HITB E 2
+		HITB E 2 A_SetScale(scalex + 0.05)
+	Cleanup:
+		HITB E 0 A_JumpIf(waterlevel < 2, "Abort")
+		TNT1 A 0 A_FadeOut(0.0125,true)
+		TNT1 A 0 A_SetScale(scalex + 0.05)
+		HITB E 3 A_Wander
+		Loop
+	Abort:
+		"----" A 1 A_FadeOut(0.1,true)
+		Loop
+	}
+}

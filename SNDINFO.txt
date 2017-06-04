@@ -1,0 +1,11 @@
+$pitchshiftrange 4
+
+blood/drip	rottgib0
+/*
+blood/sp2	rottgib1
+
+$rolloff blood/sp1 8.0 128.0
+$rolloff blood/sp2 8.0 128.0
+
+$random blood/drip { blood/sp1 blood/sp2 }
+*/

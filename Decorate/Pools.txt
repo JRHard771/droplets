@@ -1,0 +1,57 @@
+ACTOR BloodPool2
+{
+	+NOTONAUTOMAP
+	+NOTELEPORT
+	+THRUACTORS
+	+MOVEWITHSECTOR
+	+DONTSPLASH
+	RenderStyle Translucent
+	var float user_size;
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_JumpIf(CallACS("LiquidCheck"),"Fog")
+		//TNT1 A 0 ACS_NamedExecuteAlways("BloodAlpha")
+		TNT1 A 0
+		{
+			user_size = 0.02;
+		}
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0))
+		goto Pool
+	Pool:
+		SPLT F 1 A_SetScale(user_size, 0.5)
+		TNT1 A 0
+		{
+			user_size = user_size + (2.6 - user_size) / 175.0;
+		}
+		TNT1 A 0 A_JumpIf(user_size < 2.5, "Pool")
+		goto Done
+	Done:
+		SPLT F -1
+		Stop
+	Fog:
+		TNT1 A 0 A_SetTranslucent(0.2)
+		TNT1 A 0
+		{
+			user_size = 0.02;
+		}
+		TNT1 A 0 A_SetAngle(random(0.0,359.99))
+	FogPool:
+		BFOG A 3 A_SetScale(user_size, 0.5)
+		TNT1 A 0 A_JumpIf(alpha > 0.33, 2)
+		TNT1 A 0 A_FadeIn(0.001)
+		TNT1 A 0
+		{
+			user_size = user_size + (2.6 - user_size) / 35.0;
+		}
+		TNT1 A 0 A_SetAngle(angle - 2)
+		TNT1 A 0 A_JumpIf(user_size < 2.5, "FogPool")
+		goto FogDone
+	FogDone:
+		TNT1 A 0 A_SpawnItemEx("BloodFog",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+		BFOG AAAAAAAAAAAAAAAAAAAA 3 A_SetAngle(angle - 2)
+		TNT1 A 0 A_FadeOut(0.01, true)
+		TNT1 A 0 A_SetScale(scalex + 0.01)
+		Loop
+	}
+}
