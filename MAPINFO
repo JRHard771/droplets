@@ -1,6 +1,5 @@
 gameinfo
 {
 	defaultbloodcolor = "6f0000"
-	gibfactor = 0.75
 	ForceKillScripts = true
 }

@@ -2,3 +2,9 @@ server float blood_rand = 1.0;
 server float blood_alpha = 0.75;
 server int blood_amt = 1;
 server bool blood_pools = false;
+server bool blood_gibs = false;
+server float blood_gfact = 1.0;
+
+user int cl_drop3_dist = 384;
+user int cl_drop2_dist = 768;
+user int cl_drop1_dist = 1536;

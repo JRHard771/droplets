@@ -1,37 +1,6 @@
 #library "droplets"
 #include "zcommon.acs"
 
-//int total_drops;
-/*
-script "AllowBloodSpawn" (void)
-{
-	if (GetCVar("blood_limited")==0) {
-		SetResultValue(true);
-	}
-	else
-	{
-		int limit = GetCVar("blood_cap");
-		if (total_drops + 1 > limit)
-			SetResultValue(false);
-		else
-		{
-			total_drops++;
-			SetResultValue(true);
-		}
-	}
-}
-
-script "BloodDespawn" (void)
-{
-	if (total_drops > 0)
-		total_drops--;
-}
-
-script "BloodDuration" (void)
-{
-	SetResultValue(GetCVar("blood_secs")*35);
-}
-*/
 function int abs(int value)
 {
 	if (value < 0)
@@ -56,46 +25,52 @@ script "BloodScale" (void)
 
 script 86 KILL
 {
-	if (!GetCVar("blood_pools") || !CheckFlag(0, "ISMONSTER") || CheckFlag(0, "NOBLOOD"))
-	{
+	if (!CheckFlag(0, "ISMONSTER") || CheckFlag(0, "NOBLOOD"))
 		terminate;
+	if (GetCVar("blood_gibs"))
+	{
+		int monster_health = GetActorProperty(0, APROP_Health);
+		int monster_gibhp = (GetActorProperty(0, APROP_SpawnHealth) * GetCVar("blood_gfact") + 0.5) >> 16;
+		if (abs(monster_health) >= monster_gibhp)
+			GiveInventory("GibMe", 1);
 	}
+	if (!GetCVar("blood_pools"))
+		terminate;
 	Delay(7);
-	while (abs(GetActorVelX(0)) + abs(GetActorVelY(0)) + abs(GetActorVelZ(0)) > 1.0)
+	while (abs(GetActorVelX(0)) + abs(GetActorVelY(0)) + abs(GetActorVelZ(0)) > 0.3)
 	{
 		Delay(7);
 	}
-	Spawn("BloodPool2", GetActorX(0), GetActorY(0), GetActorZ(0));
+	GiveInventory("BleedMe", 1);
 }
 
-script "BloodAlpha" (void)
+script "86me" DEATH
 {
-	SetActorProperty(0,APROP_Alpha,GetCVar("blood_alpha"));
+	if (CheckFlag(0, "NOBLOOD"))
+		terminate;
+	if (GetCVar("blood_gibs"))
+	{
+		int player_health = GetActorProperty(0, APROP_Health);
+		int player_gibhp = GetActorProperty(0, APROP_SpawnHealth);
+		if (player_gibhp == 0)
+			player_gibhp = 100;
+		player_gibhp = (player_gibhp * GetCVar("blood_gfact") + 0.5) >> 16;
+		if (abs(player_health) >= player_gibhp)
+			GiveInventory("GibMe", 1);
+	}
+	if (!GetCVar("blood_pools"))
+		terminate;
+	Delay(7);
+	while (abs(GetActorVelX(0)) + abs(GetActorVelY(0)) + abs(GetActorVelZ(0)) > 0.3)
+	{
+		Delay(7);
+	}
+	GiveInventory("BleedMe", 1);
 }
 
 script "SkyCheck" (void)
 {
 	SetResultValue(CheckActorCeilingTexture(0,"F_SKY1"));
-}
-
-script "BloodLevel" (void)
-{
-	SetResultValue(GetCVar("blood_amt"));
-}
-
-script "BloodDirect" (void)
-{/*
-	int x1 = GetActorX(0);
-	int y1 = GetActorY(0);
-	if (!SetActivatorToTarget(0))
-		SetResultValue(random(0,359));
-	else {
-		int x2 = GetActorX(0);
-		int y2 = GetActorY(0);
-		int result = FixedMul(VectorAngle(x1 - x2, y1 - y2),360.0)>>16;
-		SetResultValue(result);
-	}*/
-	SetResultValue(random(0.0,360.0));
 }
 
 script "LiquidCheck" (void)

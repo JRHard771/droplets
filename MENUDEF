@@ -1,24 +1,7 @@
-OptionMenu "OptionsMenu"
+AddOptionMenu "OptionsMenu"
 {
-	Title "OPTIONS"
-	Submenu "Customize Controls",		"CustomizeControls"
-	Submenu "Mouse options",			"MouseOptions"
-	Submenu "Joystick options",			"JoystickOptions"
 	StaticText " "
-	Submenu "Player Setup",				"PlayerMenu"
-	Submenu "Gameplay Options",			"GameplayOptions"
-	Submenu "Compatibility Options",	"CompatibilityOptions"
-	Submenu "Automap Options",			"AutomapOptions"
-	Submenu "HUD Options",				"HUDOptions"
-	Submenu "Miscellaneous Options",	"MiscOptions"
-	Submenu "Sound Options",			"SoundOptions"
-	Submenu "Display Options",			"VideoOptions"
-	Submenu "Blood Options",			"BloodOptions"
-	Submenu "Set video mode",			"VideoModeMenu"
-	StaticText " "
-	SafeCommand "Reset to defaults",	"reset2defaults"
-	SafeCommand	"Reset to last saved",	"reset2saved"
-	Command "Go to console",			"menuconsole"
+	Submenu "Droplets Options", "BloodOptions"
 }
 
 OptionValue "BloodAmount"
@@ -32,11 +15,11 @@ OptionMenu "BloodOptions"
 {
 	Title "Blood Options"
 	Option "Blood Amount", "blood_amt", "BloodAmount"
-	//Slider "Blood Lifespan", "blood_secs", 5, 300, 5
 	Slider "Blood Opacity", "blood_alpha", 0.5, 1.0, 0.05
 	Slider "Blood Velocity", "blood_rand", 0.5, 2.0, 0.1
-	//Option "Limit Blood Spawning", "blood_limited", "onoff"
 	Slider "Blood Limit", "sv_corpsequeuesize", 64, 8192, 64
 	Slider "Decal Limit", "cl_maxdecals", 512, 8192, 128
-	Option "Spawn Red Blood Pools", "blood_pools", "onoff"
+	Option "Spawn Blood Pools", "blood_pools", "onoff"
+	Option "Spawn Giblets", "blood_gibs", "onoff"
+	Slider "Gib Factor", "blood_gfact", 0.1, 1.0, 0.1
 }
