@@ -4,7 +4,7 @@ Droplets is not a mod intended to simply make your game gorier or to add flashy 
 
 ## About this repository
 
-Droplets is not my creation. It is a mod by SidDoyle of the ZDoom Forums (original thread [here](https://forum.zdoom.org/viewtopic.php?f=46&t=46509). Unfortunately SidDoyle has been MIA since 2017-03-25 and many of his projects have fallen to link rot. Since Droplets is rather popular, this repository is intended to archive the last known versions of his code and enable subsequent patches or improvements from the community at large. 
+Droplets is not my creation. It is a mod by SidDoyle of the ZDoom Forums (original thread [here](https://forum.zdoom.org/viewtopic.php?f=46&t=46509)). Unfortunately SidDoyle has been MIA since 2017-03-25 and many of his projects have fallen to link rot. Since Droplets is rather popular, this repository is intended to archive the last known versions of his code and enable subsequent patches or improvements from the community at large. 
 
 ## About branches
 
