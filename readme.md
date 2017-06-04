@@ -9,3 +9,8 @@ Droplets is not my creation. It is a mod by SidDoyle of the ZDoom Forums (origin
 ## About branches
 
 Droplets was released in various versions with multiple variants, intended to provide options for compatibility with other popular mods. Using branches seems to be the most logical solution to replicate what SidDoyle intended. As such, the master branch will likely not contain any code. Rather, you must select which branch you wish to use.
+
+* [v14 Standard Edition](https://github.com/caligari87/droplets/tree/v14) ([.zip](https://github.com/caligari87/droplets/archive/v14.zip))
+* [v15 Standard Edition](https://github.com/caligari87/droplets/tree/v15) ([.zip](https://github.com/caligari87/droplets/archive/v15.zip))
+
+Other branches and compatability patches will be added, and described here as requested.
