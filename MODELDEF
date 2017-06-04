@@ -118,7 +118,7 @@ Model CeilDrip3      // Name of actor in DECORATE
    FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
-Model BloodDroplet      // Name of actor in DECORATE
+Model BloodDrop1      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
    Model 0 "bloodspot.md3"    // Model index, model file
@@ -128,7 +128,7 @@ Model BloodDroplet      // Name of actor in DECORATE
    FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
-Model BloodDroplet      // Name of actor in DECORATE
+Model BloodDrop1      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
    Model 0 "bloodspot.md3"    // Model index, model file

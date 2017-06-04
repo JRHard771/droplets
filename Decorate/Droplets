@@ -1,4 +1,4 @@
-ACTOR BloodDroplet
+ACTOR BloodDrop1
 {
 	Radius 4
 	Height 4
@@ -71,7 +71,7 @@ ACTOR BloodDroplet
 	}
 }
 
-ACTOR DecoDroplet : BloodDroplet
+ACTOR DecoDroplet : BloodDrop1
 {
 	States
 	{
@@ -100,7 +100,7 @@ ACTOR DecoDroplet : BloodDroplet
 	}
 }
 
-ACTOR BloodDrop2 : BloodDroplet
+ACTOR BloodDrop2 : BloodDrop1
 {
 	+DONTSPLASH
 	Friction 0.02
@@ -176,14 +176,14 @@ ACTOR DecoDrop2 : BloodDrop2
 		"####" "#" 1 A_SetScale(1.9 * GetCVar("blood_size"),0.1)
 		"####" "#" 1 A_SetScale(frandom(2.66,4.0) * GetCVar("blood_size"),0.1)
 		"####" "#" 0 A_QueueCorpse
-		"####" "#" -1
+		goto Cleanup
 	Fog:
 		TNT1 A 0 A_SpawnItemEx("DecoFog2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }
 
-ACTOR BloodDrop3 : BloodDroplet
+ACTOR BloodDrop3 : BloodDrop1
 {
 	+DONTSPLASH
 	Friction 0.04

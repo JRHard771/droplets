@@ -33,13 +33,13 @@ ACTOR GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL A random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
 		Wait
 	Death:
-		"----" A -1 A_SpawnItemEx("BloodDroplet",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+		"----" A -1 A_SpawnItemEx("BloodDrop1",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
 		Stop
 	}
 }
@@ -52,7 +52,7 @@ ACTOR GibletB : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL B random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -68,7 +68,7 @@ ACTOR GibletC : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL C random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -84,7 +84,7 @@ ACTOR GibletD : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL D random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -100,7 +100,7 @@ ACTOR GibletE : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL E random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -116,7 +116,7 @@ ACTOR GibletF : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL F random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -132,7 +132,7 @@ ACTOR GibletG : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL G random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -148,7 +148,7 @@ ACTOR GibletH : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL H random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -164,7 +164,7 @@ ACTOR GibletI : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL I random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -180,7 +180,7 @@ ACTOR GibletJ : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL J random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -196,7 +196,7 @@ ACTOR GibletK : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL K random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -212,7 +212,7 @@ ACTOR GibletL : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL L random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -228,7 +228,7 @@ ACTOR GibletM : GibletA
 		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0))
 		GIBL M random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
@@ -257,7 +257,7 @@ ACTOR RandGiblet : GibletA
 		GIBL M 0
 		"----" A random(2,4)
 		{
-			A_SpawnItemEx("BloodDroplet",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
+			A_SpawnItemEx("BloodDrop1",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,160);
 			A_SpawnItemEx("BloodDrop2",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,128);
 			A_SpawnItemEx("BloodDrop3",0,0,0,velx,vely,velz+frandom(0,4),0,SXF_TRANSFERTRANSLATION,96);
 		}
