@@ -27,8 +27,18 @@ script 86 KILL
 {
 	if (!CheckFlag(0, "ISMONSTER") || CheckFlag(0, "NOBLOOD"))
 		terminate;
-	if (GetCVar("blood_gibs"))
-		GiveInventory("GibMe", 1);
+	if (GetCVar("blood_gibs") &&
+		!(CheckActorClass(0,"DCompat_Bakademon") ||
+		CheckActorClass(0,"DCompat_HellPrince") ||
+		CheckActorClass(0,"DCompat_HellKnave") ||
+		CheckActorClass(0,"DCompat_KillerBarrel") ||
+		CheckActorClass(0,"DCompat_InnocentBarrel")))
+	{
+		int monster_health = GetActorProperty(0, APROP_Health);
+		int monster_gibhp = (GetActorProperty(0, APROP_SpawnHealth) * GetCVar("blood_gfact") + 0.5) >> 16;
+		if (abs(monster_health) >= monster_gibhp)
+			GiveInventory("GibMe", 1);
+	}
 	if (!GetCVar("blood_pools"))
 		terminate;
 	Delay(7);
@@ -44,7 +54,15 @@ script "86me" DEATH
 	if (CheckFlag(0, "NOBLOOD"))
 		terminate;
 	if (GetCVar("blood_gibs"))
-		GiveInventory("GibMe", 1);
+	{
+		int player_health = GetActorProperty(0, APROP_Health);
+		int player_gibhp = GetActorProperty(0, APROP_SpawnHealth);
+		if (player_gibhp == 0)
+			player_gibhp = 100;
+		player_gibhp = (player_gibhp * GetCVar("blood_gfact") + 0.5) >> 16;
+		if (abs(player_health) >= player_gibhp)
+			GiveInventory("GibMe", 1);
+	}
 	if (!GetCVar("blood_pools"))
 		terminate;
 	Delay(7);

@@ -1,4 +1,5 @@
 gameinfo
 {
+	defaultbloodcolor = "6f0000"
 	ForceKillScripts = true
 }

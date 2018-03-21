@@ -7,6 +7,7 @@ ACTOR BloodSquirt replaces Blood
 	+ALLOWPARTICLES
 	+PUFFGETSOWNER
 	+NOGRAVITY
+	var float user_z;
 	States
 	{
 	Spawn:
@@ -14,24 +15,30 @@ ACTOR BloodSquirt replaces Blood
 		TNT1 A 0 A_Jump(256,"Mid")
 		TNT1 A 0
 		{
-			A_FaceTarget(0,0,0,0,FAF_MIDDLE);
-			A_Warp(AAPTR_DEFAULT,cos(angle)*8,sin(angle)*8,sin(pitch)*8,0,WARPF_ABSOLUTEOFFSET);
+			user_z = z;
+			A_FaceTarget;
+			A_Warp(AAPTR_TARGET,0,0,0,angle,WARPF_NOCHECKPOSITION|WARPF_ABSOLUTEANGLE);
+			A_Warp(AAPTR_DEFAULT,0,0,user_z - z,0);
 			A_SpawnItemEx("BloodHitPuffSmall",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
 		}
 		stop
 	Spray:
 		TNT1 A 0
 		{
-			A_FaceTarget(0,0,0,0,FAF_MIDDLE);
-			A_Warp(AAPTR_DEFAULT,cos(angle)*8,sin(angle)*8,sin(pitch)*8,0,WARPF_ABSOLUTEOFFSET);
+			user_z = z;
+			A_FaceTarget;
+			A_Warp(AAPTR_TARGET,0,0,0,angle,WARPF_NOCHECKPOSITION|WARPF_ABSOLUTEANGLE);
+			A_Warp(AAPTR_DEFAULT,0,0,user_z - z,0);
 			A_SpawnItemEx("BloodHitPuff",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION,128-GetCVar(blood_amt)*64);
 		}
 		stop
 	Mid:
 		TNT1 A 0
 		{
-			A_FaceTarget(0,0,0,0,FAF_MIDDLE);
-			A_Warp(AAPTR_DEFAULT,cos(angle)*8,sin(angle)*8,sin(pitch)*8,0,WARPF_ABSOLUTEOFFSET);
+			user_z = z;
+			A_FaceTarget;
+			A_Warp(AAPTR_TARGET,0,0,0,angle,WARPF_NOCHECKPOSITION|WARPF_ABSOLUTEANGLE);
+			A_Warp(AAPTR_DEFAULT,0,0,user_z - z,0);
 			A_SpawnItemEx("BloodHitPuffMid",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION,64-GetCVar(blood_amt)*32);
 		}
 		stop
@@ -60,17 +67,32 @@ ACTOR BloodHitPuff
 			user_angmom = frandom(-4.5,4.5);
 			A_SetPitch(frandom(-45.0,90.0));
 			A_PlaySound("blood/hit",0,0.3);
-			scalex *= randompick(1,-1);
 		}
+		TNT1 A 0 A_Jump(128, "Mirror")
 		BLPF AABBCCDDEE 1
 		{
-			A_SpawnItemEx("BloodDrop1",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(224-GetCVar(blood_amt)*48));
+			A_SpawnItemEx("BloodDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*64));
 			angle += user_angmom;
-			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(160-GetCVar(blood_amt)*48));
+			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(192-GetCVar(blood_amt)*64));
 			angle += user_angmom;
-			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(96-GetCVar(blood_amt)*48));
+			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(128-GetCVar(blood_amt)*64));
 			angle += user_angmom;
-			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*64));
+			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*128));
+			angle += user_angmom;
+			user_force *= 0.8;
+		}
+		TNT1 A 0
+		Stop
+	Mirror:
+		BLPF FFGGHHIIJJ 1
+		{
+			A_SpawnItemEx("BloodDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*64));
+			angle += user_angmom;
+			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(192-GetCVar(blood_amt)*64));
+			angle += user_angmom;
+			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(128-GetCVar(blood_amt)*64));
+			angle += user_angmom;
+			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*128));
 			angle += user_angmom;
 			user_force *= 0.8;
 		}
@@ -91,15 +113,28 @@ ACTOR BloodHitPuffMid : BloodHitPuff
 			user_angmom = frandom(-6.0,6.0);
 			A_SetPitch(frandom(-45.0,90.0));
 			A_PlaySound("blood/hit",0,0.2);
-			scalex *= randompick(1,-1);
 		}
+		TNT1 A 0 A_Jump(128, "Mirror")
 		BLPF AABBCCDDEE 1
 		{
-			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(160-GetCVar(blood_amt)*48));
+			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(192-GetCVar(blood_amt)*64));
 			angle += user_angmom;
-			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(96-GetCVar(blood_amt)*48));
+			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(128-GetCVar(blood_amt)*64));
 			angle += user_angmom;
-			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*64));
+			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*128));
+			angle += user_angmom;
+			user_force *= 0.8;
+		}
+		TNT1 A 0
+		Stop
+	Mirror:
+		BLPF FFGGHHIIJJ 1
+		{
+			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(192-GetCVar(blood_amt)*64));
+			angle += user_angmom;
+			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(128-GetCVar(blood_amt)*64));
+			angle += user_angmom;
+			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*128));
 			angle += user_angmom;
 			user_force *= 0.8;
 		}
@@ -120,13 +155,24 @@ ACTOR BloodHitPuffSmall : BloodHitPuff
 			user_angmom = frandom(-9.0,9.0);
 			A_SetPitch(frandom(-45.0,90.0));
 			A_PlaySound("blood/hit",0,0.1);
-			scalex *= randompick(1,-1);
 		}
+		TNT1 A 0 A_Jump(128, "Mirror")
 		BLPF AABBCCDDEE 1
 		{
-			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(96-GetCVar(blood_amt)*48));
+			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(128-GetCVar(blood_amt)*64));
 			angle += user_angmom;
-			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*64));
+			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*128));
+			angle += user_angmom;
+			user_force *= 0.8;
+		}
+		TNT1 A 0
+		Stop
+	Mirror:
+		BLPF FFGGHHIIJJ 1
+		{
+			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(128-GetCVar(blood_amt)*64));
+			angle += user_angmom;
+			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar(blood_amt)*128));
 			angle += user_angmom;
 			user_force *= 0.8;
 		}
@@ -135,7 +181,7 @@ ACTOR BloodHitPuffSmall : BloodHitPuff
 	}
 }
 
-ACTOR BloodSplatPuff : BloodHitPuff replaces BloodSplatter
+ACTOR BloodSplatPuff : BloodSquirt replaces BloodSplatter
 {}
 
 ACTOR AxeBloodPuff : BloodHitPuff replaces AxeBlood

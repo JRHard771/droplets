@@ -249,8 +249,8 @@ decal BloodSpot1s
 {
 	pic BSPOT1
 	shade "BloodDefault"
-	x-scale 0.05
-	y-scale 0.05
+	x-scale 0.1
+	y-scale 0.1
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
@@ -260,8 +260,8 @@ decal BloodSpot2s
 {
 	pic BSPOT2
 	shade "BloodDefault"
-	x-scale 0.05
-	y-scale 0.05
+	x-scale 0.1
+	y-scale 0.1
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
@@ -271,39 +271,19 @@ decal BloodSpot3s
 {
 	pic BSPOT3
 	shade "BloodDefault"
-	x-scale 0.05
-	y-scale 0.05
+	x-scale 0.1
+	y-scale 0.1
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
-}
-
-decal BloodSpot4s
-{
-	pic BSPOT4
-	shade "BloodDefault"
-	x-scale 0.2
-	y-scale 0.2
-	randomflipx
-	randomflipy
-}
-
-decal BloodSpot5s
-{
-	pic BSPOT5
-	shade "BloodDefault"
-	x-scale 0.15
-	y-scale 0.15
-	randomflipx
-	randomflipy
 }
 
 decal BloodSpot1m
 {
 	pic BSPOT1
 	shade "BloodDefault"
-	x-scale 0.1
-	y-scale 0.1
+	x-scale 0.2
+	y-scale 0.2
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
@@ -313,8 +293,8 @@ decal BloodSpot2m
 {
 	pic BSPOT2
 	shade "BloodDefault"
-	x-scale 0.1
-	y-scale 0.1
+	x-scale 0.2
+	y-scale 0.2
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
@@ -324,31 +304,11 @@ decal BloodSpot3m
 {
 	pic BSPOT3
 	shade "BloodDefault"
-	x-scale 0.1
-	y-scale 0.1
+	x-scale 0.2
+	y-scale 0.2
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
-}
-
-decal BloodSpot4m
-{
-	pic BSPOT4
-	shade "BloodDefault"
-	x-scale 0.4
-	y-scale 0.4
-	randomflipx
-	randomflipy
-}
-
-decal BloodSpot5m
-{
-	pic BSPOT5
-	shade "BloodDefault"
-	x-scale 0.3
-	y-scale 0.3
-	randomflipx
-	randomflipy
 }
 
 decal RunBlood1
@@ -392,8 +352,8 @@ decal BloodSpot1l
 {
 	pic BSPOT1
 	shade "BloodDefault"
-	x-scale 0.15
-	y-scale 0.15
+	x-scale 0.3
+	y-scale 0.3
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
@@ -403,8 +363,8 @@ decal BloodSpot2l
 {
 	pic BSPOT2
 	shade "BloodDefault"
-	x-scale 0.15
-	y-scale 0.15
+	x-scale 0.3
+	y-scale 0.3
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
@@ -414,31 +374,11 @@ decal BloodSpot3l
 {
 	pic BSPOT3
 	shade "BloodDefault"
-	x-scale 0.15
-	y-scale 0.15
+	x-scale 0.3
+	y-scale 0.3
 	randomflipx
 	randomflipy
 	lowerdecal RunnyBlood
-}
-
-decal BloodSpot4l
-{
-	pic BSPOT4
-	shade "BloodDefault"
-	x-scale 0.6
-	y-scale 0.6
-	randomflipx
-	randomflipy
-}
-
-decal BloodSpot5l
-{
-	pic BSPOT5
-	shade "BloodDefault"
-	x-scale 0.45
-	y-scale 0.45
-	randomflipx
-	randomflipy
 }
 
 decalgroup BloodSpotS
@@ -446,27 +386,341 @@ decalgroup BloodSpotS
 	BloodSpot1s	1
 	BloodSpot2s	1
 	BloodSpot3s	1
-	BloodSpot4s	1
-	BloodSpot5s	1
 }
-//generator	BloodDrop3	BloodSpotS
+generator	BloodDrop3	BloodSpotS
 
 decalgroup BloodSpotM
 {
 	BloodSpot1m	1
 	BloodSpot2m	1
 	BloodSpot3m	1
-	BloodSpot4m	1
-	BloodSpot5m	1
 }
-//generator	BloodDrop2	BloodSpotM
+generator	BloodDrop2	BloodSpotM
 
 decalgroup BloodSpotL
 {
 	BloodSpot1l	1
 	BloodSpot2l	1
 	BloodSpot3l	1
-	BloodSpot4l	1
-	BloodSpot5l	1
 }
-//generator	BloodDroplet	BloodSpotL
+generator	BloodDroplet	BloodSpotL
+
+decal BloodSpot1gs
+{
+	pic BSPOT1
+	shade "22 55 11"
+	x-scale 0.1
+	y-scale 0.1
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot2gs
+{
+	pic BSPOT2
+	shade "22 55 11"
+	x-scale 0.1
+	y-scale 0.1
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot3gs
+{
+	pic BSPOT3
+	shade "22 55 11"
+	x-scale 0.1
+	y-scale 0.1
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot1gm
+{
+	pic BSPOT1
+	shade "22 55 11"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot2gm
+{
+	pic BSPOT2
+	shade "22 55 11"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot3gm
+{
+	pic BSPOT3
+	shade "22 55 11"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal RunBloodg1
+{
+	pic BRUNY1
+	shade "22 55 11"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	animator DripAnimateNoOx
+}
+
+decal RunBloodg2
+{
+	pic BRUNY2
+	shade "22 55 11"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	animator DripAnimateNoOx
+}
+
+decal RunBloodg3
+{
+	pic BRUNY3
+	shade "22 55 11"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	animator DripAnimateNoOx
+}
+
+decalgroup RunnyBloodg
+{
+	RunBloodg1	3
+	RunBloodg2	2
+	RunBloodg3	1
+}
+
+decal BloodSpot1gl
+{
+	pic BSPOT1
+	shade "22 55 11"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot2gl
+{
+	pic BSPOT2
+	shade "22 55 11"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decal BloodSpot3gl
+{
+	pic BSPOT3
+	shade "22 55 11"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodg
+}
+
+decalgroup BloodSpotGS
+{
+	BloodSpot1gs	1
+	BloodSpot2gs	1
+	BloodSpot3gs	1
+}
+generator	BloodDropG3	BloodSpotGS
+
+decalgroup BloodSpotGM
+{
+	BloodSpot1gm	1
+	BloodSpot2gm	1
+	BloodSpot3gm	1
+}
+generator	BloodDropG2	BloodSpotGM
+
+decalgroup BloodSpotGL
+{
+	BloodSpot1gl	1
+	BloodSpot2gl	1
+	BloodSpot3gl	1
+}
+generator	BloodDropG	BloodSpotGL
+
+decal BloodSpot1bs
+{
+	pic BSPOT1
+	shade "00 00 80"
+	x-scale 0.1
+	y-scale 0.1
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot2bs
+{
+	pic BSPOT2
+	shade "00 00 80"
+	x-scale 0.1
+	y-scale 0.1
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot3bs
+{
+	pic BSPOT3
+	shade "00 00 80"
+	x-scale 0.1
+	y-scale 0.1
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot1bm
+{
+	pic BSPOT1
+	shade "00 00 80"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot2bm
+{
+	pic BSPOT2
+	shade "00 00 80"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot3bm
+{
+	pic BSPOT3
+	shade "00 00 80"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal RunBloodb1
+{
+	pic BRUNY1
+	shade "00 00 80"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	animator DripAnimateNoOx
+}
+
+decal RunBloodb2
+{
+	pic BRUNY2
+	shade "00 00 80"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	animator DripAnimateNoOx
+}
+
+decal RunBloodb3
+{
+	pic BRUNY3
+	shade "00 00 80"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	animator DripAnimateNoOx
+}
+
+decalgroup RunnyBloodb
+{
+	RunBloodb1	3
+	RunBloodb2	2
+	RunBloodb3	1
+}
+
+decal BloodSpot1bl
+{
+	pic BSPOT1
+	shade "00 00 80"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot2bl
+{
+	pic BSPOT2
+	shade "00 00 80"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decal BloodSpot3bl
+{
+	pic BSPOT3
+	shade "00 00 80"
+	x-scale 0.3
+	y-scale 0.3
+	randomflipx
+	randomflipy
+	lowerdecal RunnyBloodb
+}
+
+decalgroup BloodSpotBS
+{
+	BloodSpot1bs	1
+	BloodSpot2bs	1
+	BloodSpot3bs	1
+}
+generator	BloodDropB3	BloodSpotBS
+
+decalgroup BloodSpotBM
+{
+	BloodSpot1bm	1
+	BloodSpot2bm	1
+	BloodSpot3bm	1
+}
+generator	BloodDropB2	BloodSpotBM
+
+decalgroup BloodSpotBL
+{
+	BloodSpot1bl	1
+	BloodSpot2bl	1
+	BloodSpot3bl	1
+}
+generator	BloodDropB	BloodSpotBL

@@ -1,0 +1,9 @@
+actor DCompat_KillerBarrel : KillerBarrel replaces KillerBarrel
+{
+	BloodType "GreenSquirt"
+}
+
+actor DCompat_InnocentBarrel : InnocentBarrel replaces InnocentBarrel
+{
+	BloodType "GreenSquirt"
+}

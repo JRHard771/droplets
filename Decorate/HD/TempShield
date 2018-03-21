@@ -1,0 +1,19 @@
+actor DCompat_tsgreen : tempshieldgreen
+{
+	bloodtype "GreenSquirt"
+}
+
+actor DCompat_ts2green:tempshield2green
+{
+	bloodtype "GreenSquirt"
+}
+
+actor DCompat_tsblue:tempshieldblue
+{
+	bloodtype "BlueSquirt"
+}
+
+actor DCompat_ts2blue:tempshield2blue
+{
+	bloodtype "BlueSquirt"
+}
