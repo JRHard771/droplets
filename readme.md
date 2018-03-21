@@ -12,5 +12,6 @@ Droplets was released in various versions with multiple variants, intended to pr
 
 * [v14 Standard Edition](https://github.com/caligari87/droplets/tree/v14) ([.zip](https://github.com/caligari87/droplets/archive/v14.zip))
 * [v15 Standard Edition](https://github.com/caligari87/droplets/tree/v15) ([.zip](https://github.com/caligari87/droplets/archive/v15.zip))
+* [v15 Hideous Destructor Edition](https://github.com/caligari87/droplets/tree/v15_HD) ([.zip](https://github.com/caligari87/droplets/archive/v15_HD.zip)) - Hideous Destructor compatibility patch
 
 Other branches and compatability patches will be added, and described here as requested.
