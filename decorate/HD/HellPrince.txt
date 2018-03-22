@@ -1,7 +1,7 @@
-/*actor DCompat_HellPrince : HellPrince replaces HellPrince
+actor DCompat_HellPrince : HellPrince replaces HellPrince
 {
 	BloodType "GreenSquirt"
-}*/
+}
 
 actor DCompat_HellKnave : HellKnave replaces HellKnave
 {
