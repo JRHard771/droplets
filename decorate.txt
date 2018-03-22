@@ -1,13 +1,13 @@
-#include "Decorate/Pools"
-#include "Decorate/Gibs"
-#include "Decorate/Droplets"
-#include "Decorate/Squirts"
-#include "Decorate/Ceiling"
-#include "Decorate/Liquid"
+#include "Decorate/Pools.txt"
+#include "Decorate/Gibs.txt"
+#include "Decorate/Droplets.txt"
+#include "Decorate/Squirts.txt"
+#include "Decorate/Ceiling.txt"
+#include "Decorate/Liquid.txt"
 
-#include "Decorate/HD/Bakademon"
-#include "Decorate/HD/HellPrince"
-#include "Decorate/HD/Barrel"
+#include "Decorate/HD/Bakademon.txt"
+#include "Decorate/HD/HellPrince.txt"
+#include "Decorate/HD/Barrel.txt"
 
 ACTOR BloodDropG : BloodDroplet
 {
