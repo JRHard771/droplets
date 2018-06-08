@@ -18,15 +18,15 @@ ACTOR BloodDropG : BloodDroplet
 		TNT1 A 0 A_PlaySound("blood/drip", 0, 1.0, false, 7.0)
 		TNT1 AAA 0 A_SpawnItemEx("BloodDropG3",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,1.0),0,SXF_TRANSFERTRANSLATION, 128)
 		TNT1 AA 0 A_SpawnItemEx("BloodDropG2",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,1.0),0,SXF_TRANSFERTRANSLATION, 128)
-		SPLT A 1 A_JumpIf(ceilingz - z < 8.0, "Ceil")
-		SPLT B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
+		SPLA A 1 A_JumpIf(ceilingz - z < 8.0, "Ceil")
+		SPLA B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
 		TNT1 A 0 A_JumpIf(CallACS("LiquidCheck"),"Fog")
-		SPLT CD 1
-		SPLT E 1 A_SetAngle(frandom(0.0,360.0))
+		SPLA CD 1
+		SPLA E 1 A_SetAngle(frandom(0.0,360.0))
 		TNT1 A 0 A_Jump(128, 2)
-		SPLT F 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
+		SPLA F 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
 		goto Splat
-		SPLT G 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
+		SPLA G 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
 	Splat:
 		"####" "#" 1 A_SetScale(1.7 * GetCVar("blood_size"),0.1)
 		"####" "#" 1 A_SetScale(2.4 * GetCVar("blood_size"),0.1)
@@ -43,15 +43,15 @@ ACTOR BloodDropG2 : BloodDrop2
 	Death:
 		TNT1 A 0 A_ChangeFlag("WINDTHRUST", false)
 		TNT1 AAA 0 A_SpawnItemEx("BloodDropG3",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,1.0),0,SXF_TRANSFERTRANSLATION, 128)
-		SPLT A 1 A_JumpIf(ceilingz - z < 6.0, "Ceil")
-		SPLT B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
+		SPLA A 1 A_JumpIf(ceilingz - z < 6.0, "Ceil")
+		SPLA B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
 		TNT1 A 0 A_JumpIf(CallACS("LiquidCheck"),"Fog")
-		SPLT CD 1
-		SPLT E 1 A_SetAngle(frandom(0.0,360.0))
+		SPLA CD 1
+		SPLA E 1 A_SetAngle(frandom(0.0,360.0))
 		TNT1 A 0 A_Jump(128, 2)
-		SPLT F 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
+		SPLA F 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
 		goto Splat
-		SPLT G 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
+		SPLA G 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
 	Splat:
 		"####" "#" 1 A_SetScale(0.97 * GetCVar("blood_size"),0.1)
 		"####" "#" 1 A_SetScale(1.36 * GetCVar("blood_size"),0.1)
@@ -236,15 +236,15 @@ ACTOR BloodDropB : BloodDroplet
 		TNT1 A 0 A_PlaySound("blood/drip", 0, 1.0, false, 7.0)
 		TNT1 AAA 0 A_SpawnItemEx("BloodDropB3",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,1.0),0,SXF_TRANSFERTRANSLATION, 128)
 		TNT1 AA 0 A_SpawnItemEx("BloodDropB2",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,1.0),0,SXF_TRANSFERTRANSLATION, 128)
-		SPLT A 1 A_JumpIf(ceilingz - z < 8.0, "Ceil")
-		SPLT B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
+		SPLA A 1 A_JumpIf(ceilingz - z < 8.0, "Ceil")
+		SPLA B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
 		TNT1 A 0 A_JumpIf(CallACS("LiquidCheck"),"Fog")
-		SPLT CD 1
-		SPLT E 1 A_SetAngle(frandom(0.0,360.0))
+		SPLA CD 1
+		SPLA E 1 A_SetAngle(frandom(0.0,360.0))
 		TNT1 A 0 A_Jump(128, 2)
-		SPLT F 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
+		SPLA F 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
 		goto Splat
-		SPLT G 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
+		SPLA G 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1)
 	Splat:
 		"####" "#" 1 A_SetScale(1.7 * GetCVar("blood_size"),0.1)
 		"####" "#" 1 A_SetScale(2.4 * GetCVar("blood_size"),0.1)
@@ -261,15 +261,15 @@ ACTOR BloodDropB2 : BloodDrop2
 	Death:
 		TNT1 A 0 A_ChangeFlag("WINDTHRUST", false)
 		TNT1 AAA 0 A_SpawnItemEx("BloodDropB3",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,1.0),0,SXF_TRANSFERTRANSLATION, 128)
-		SPLT A 1 A_JumpIf(ceilingz - z < 6.0, "Ceil")
-		SPLT B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
+		SPLA A 1 A_JumpIf(ceilingz - z < 6.0, "Ceil")
+		SPLA B 1 A_JumpIf(z > floorz + 8.0, "Goodbye")
 		TNT1 A 0 A_JumpIf(CallACS("LiquidCheck"),"Fog")
-		SPLT CD 1
-		SPLT E 1 A_SetAngle(frandom(0.0,360.0))
+		SPLA CD 1
+		SPLA E 1 A_SetAngle(frandom(0.0,360.0))
 		TNT1 A 0 A_Jump(128, 2)
-		SPLT F 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
+		SPLA F 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
 		goto Splat
-		SPLT G 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
+		SPLA G 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1)
 	Splat:
 		"####" "#" 1 A_SetScale(0.97 * GetCVar("blood_size"),0.1)
 		"####" "#" 1 A_SetScale(1.36 * GetCVar("blood_size"),0.1)
