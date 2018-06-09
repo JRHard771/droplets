@@ -65,7 +65,7 @@ Model CeilDripper      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilDripper      // Name of actor in DECORATE
@@ -75,7 +75,7 @@ Model CeilDripper      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilDrip2      // Name of actor in DECORATE
@@ -85,7 +85,7 @@ Model CeilDrip2      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilDrip2      // Name of actor in DECORATE
@@ -95,7 +95,7 @@ Model CeilDrip2      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilDrip3      // Name of actor in DECORATE
@@ -105,7 +105,7 @@ Model CeilDrip3      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilDrip3      // Name of actor in DECORATE
@@ -115,7 +115,7 @@ Model CeilDrip3      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDroplet      // Name of actor in DECORATE
@@ -125,7 +125,7 @@ Model BloodDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDroplet      // Name of actor in DECORATE
@@ -135,7 +135,7 @@ Model BloodDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDroplet      // Name of actor in DECORATE
@@ -145,7 +145,7 @@ Model CeilingDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDroplet      // Name of actor in DECORATE
@@ -155,7 +155,7 @@ Model CeilingDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDrop2      // Name of actor in DECORATE
@@ -165,7 +165,7 @@ Model CeilingDrop2      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDrop2      // Name of actor in DECORATE
@@ -175,7 +175,7 @@ Model CeilingDrop2      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDrop3      // Name of actor in DECORATE
@@ -185,7 +185,7 @@ Model CeilingDrop3      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDrop3      // Name of actor in DECORATE
@@ -195,7 +195,7 @@ Model CeilingDrop3      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDrop2      // Name of actor in DECORATE
@@ -205,7 +205,7 @@ Model BloodDrop2      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDrop2      // Name of actor in DECORATE
@@ -215,7 +215,7 @@ Model BloodDrop2      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDrop3      // Name of actor in DECORATE
@@ -225,7 +225,7 @@ Model BloodDrop3      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDrop3      // Name of actor in DECORATE
@@ -235,7 +235,7 @@ Model BloodDrop3      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDroplet      // Name of actor in DECORATE
@@ -245,7 +245,7 @@ Model DecoDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDroplet      // Name of actor in DECORATE
@@ -255,7 +255,7 @@ Model DecoDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDrop2      // Name of actor in DECORATE
@@ -265,7 +265,7 @@ Model DecoDrop2      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDrop2      // Name of actor in DECORATE
@@ -275,7 +275,7 @@ Model DecoDrop2      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDrop3      // Name of actor in DECORATE
@@ -285,7 +285,7 @@ Model DecoDrop3      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDrop3      // Name of actor in DECORATE
@@ -295,7 +295,7 @@ Model DecoDrop3      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodPool2     // Name of actor in DECORATE
@@ -305,7 +305,7 @@ Model BloodPool2     // Name of actor in DECORATE
    Skin 0 "bloodpool3.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 15 15 15            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 // =====================================
@@ -319,7 +319,7 @@ Model BloodDropG      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropG      // Name of actor in DECORATE
@@ -329,7 +329,7 @@ Model BloodDropG      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropG2      // Name of actor in DECORATE
@@ -339,7 +339,7 @@ Model BloodDropG2      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropG2      // Name of actor in DECORATE
@@ -349,7 +349,7 @@ Model BloodDropG2      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropG3      // Name of actor in DECORATE
@@ -359,7 +359,7 @@ Model BloodDropG3      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropG3      // Name of actor in DECORATE
@@ -369,7 +369,7 @@ Model BloodDropG3      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropB      // Name of actor in DECORATE
@@ -379,7 +379,7 @@ Model BloodDropB      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropB      // Name of actor in DECORATE
@@ -389,7 +389,7 @@ Model BloodDropB      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropB2      // Name of actor in DECORATE
@@ -399,7 +399,7 @@ Model BloodDropB2      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropB2      // Name of actor in DECORATE
@@ -409,7 +409,7 @@ Model BloodDropB2      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropB3      // Name of actor in DECORATE
@@ -419,7 +419,7 @@ Model BloodDropB3      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT F 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA F 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDropB3      // Name of actor in DECORATE
@@ -429,5 +429,5 @@ Model BloodDropB3      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.7
-   FrameIndex SPLT G 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex SPLA G 0 0         // The sprite lump, sprite frame, model index, frame number
 }
