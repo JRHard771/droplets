@@ -1,0 +1,223 @@
+ACTOR CeilingDroplet : DecoDroplet
+{
+	Height 1
+	Scale 0.1
+	-MISSILE
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		BLUD C 6
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.4,0.05);
+		}
+		BLUD C 5
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.37,0.1);
+		}
+		BLUD C 4
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.33,0.2);
+		}
+		BLUD C 3
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.3,0.3);
+		}
+		BLUD C 2
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.28,0.4);
+		}
+		TNT1 A 0 A_ChangeFlag("NOGRAVITY", false)
+		TNT1 A 0 A_SetScale(0.25,0.5)
+		BLUD ABCD 2
+		TNT1 A 0 A_ChangeFlag("MISSILE", true)
+		goto Fall
+	Fall:
+		TNT1 A 0 A_JumpIf(z <= floorz, "Death")
+		BLUD ABCD 2
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater")
+		Loop
+	}
+}
+
+ACTOR CeilingDrop2 : DecoDrop2
+{
+	Height 1
+	Scale 0.1
+	-MISSILE
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		BLUD C 6
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.32,0.05);
+		}
+		BLUD C 5
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.29,0.08);
+		}
+		BLUD C 4
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.27,0.15);
+		}
+		BLUD C 3
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.24,0.23);
+		}
+		BLUD C 2
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.22,0.3);
+		}
+		TNT1 A 0 A_ChangeFlag("NOGRAVITY", false)
+		TNT1 A 0 A_SetScale(0.2,0.4)
+		BLUD ABCD 2
+		TNT1 A 0 A_ChangeFlag("MISSILE", true)
+	Fall:
+		TNT1 A 0 A_JumpIf(z <= floorz, "Death")
+		BLUD ABCD 2
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater")
+		Loop
+	}
+}
+
+ACTOR CeilingDrop3 : DecoDrop3
+{
+	Height 1
+	Scale 0.1
+	-MISSILE
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		BLUD C 6
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.24,0.05);
+		}
+		BLUD C 5
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.22,0.09);
+		}
+		BLUD C 4
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.2,0.12);
+		}
+		BLUD C 3
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.18,0.16);
+		}
+		BLUD C 2
+		{
+			A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1);
+			A_SetScale(0.17,0.2);
+		}
+		TNT1 A 0 A_ChangeFlag("NOGRAVITY", false)
+		TNT1 A 0 A_SetScale(0.15,0.3)
+		BLUD ABCD 2
+		TNT1 A 0 A_ChangeFlag("MISSILE", true)
+	Fall:
+		TNT1 A 0 A_JumpIf(z <= floorz, "Death")
+		BLUD ABCD 2
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater")
+		Loop
+	}
+}
+
+ACTOR CeilDripper
+{
+	Radius 1
+	Height 1
+	+THRUACTORS
+	+NOTONAUTOMAP
+	+SPAWNCEILING
+	+NOGRAVITY
+	DistanceCheck cl_drop1_dist
+	scale 0.5
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1)
+		TNT1 A 0 A_QueueCorpse
+		SPLT F 0 A_Jump(128, 2)
+		SPLT G 0
+		"####" "#" 0 A_SetAngle(frandom(0.0,360.0))
+		"####" "#" 1 A_SetScale(1.3 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(1.82 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(2.55 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(3.57 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(frandom(5.0,6.0) * GetCVar("blood_size"),1)
+		goto Drippy
+	Drippy:
+		"####" "######" 1 A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1)
+		"####" "#" 0 A_Jump(254, "Drippy")
+		"####" "#" 0 A_SpawnItemEx("CeilingDrop2", 0, 0, 4, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+		goto Drippy
+	}
+}
+
+ACTOR CeilDrip2 : CeilDripper
+{
+	scale 0.33
+	DistanceCheck cl_drop2_dist
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1)
+		TNT1 A 0 A_QueueCorpse
+		SPLT F 0 A_Jump(128, 2)
+		SPLT G 0
+		"####" "#" 0 A_SetAngle(frandom(0.0,360.0))
+		"####" "#" 1 A_SetScale(0.78 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(1.09 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(1.53 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(2.14 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(frandom(3.0,4.0) * GetCVar("blood_size"),1)
+		goto Drippy
+	Drippy:
+		"####" "#########" 1 A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1)
+		"####" "#" 0 A_Jump(254, "Drippy")
+		"####" "#" 0 A_SpawnItemEx("CeilingDrop3", 0, 0, 4, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+		goto Drippy
+	}
+}
+
+ACTOR CeilDrip3 : CeilDripper
+{
+	scale 0.17
+	DistanceCheck cl_drop3_dist
+	States
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1)
+		TNT1 A 0 A_QueueCorpse
+		SPLT F 0 A_Jump(128, 2)
+		SPLT G 0
+		"####" "#" 0 A_SetAngle(frandom(0.0,360.0))
+		"####" "#" 1 A_SetScale(0.26 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(0.36 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(0.51 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(0.71 * GetCVar("blood_size"),1)
+		"####" "#" 1 A_SetScale(frandom(1.0,2.0) * GetCVar("blood_size"),1)
+		goto Drippy
+	Drippy:
+		"####" "############" 1 A_Warp(AAPTR_DEFAULT,0,0,ceilingz - z - 1)
+		loop
+	}
+}
