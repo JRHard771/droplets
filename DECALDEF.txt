@@ -1,6 +1,6 @@
 // DECAL CREDITS
 // Doom 3 Blood Decals uploaded by Ghastly_Dragon
-// All other decals crafted by SidDoyle
+// All other decals crafted by Josh771 a.k.a. SidDoyle
 
 colorchanger Oxidizer
 {
