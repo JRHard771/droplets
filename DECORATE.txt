@@ -1,6 +1,0 @@
-#include "Decorate/Pools.txt"
-#include "Decorate/Gibs.txt"
-#include "Decorate/Droplets.txt"
-#include "Decorate/Squirts.txt"
-#include "Decorate/Ceiling.txt"
-#include "Decorate/Liquid.txt"

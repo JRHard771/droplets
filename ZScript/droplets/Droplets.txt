@@ -1,0 +1,338 @@
+class Droplets : actor
+{
+	static const String[] liquidpics = { "NUKAGE1", "NUKAGE2", "NUKAGE3", "BLOOD1", "BLOOD2", "BLOOD3", "SLIME01",
+		"SLIME02", "SLIME03", "SLIME04", "SLIME05", "SLIME06", "SLIME07", "SLIME08", "LAVA1", "LAVA2", "LAVA3", "LAVA4",
+		"FWATER1", "FWATER2", "FWATER3", "FWATER4", "F_HWATR1", "F_HWATR2", "F_HWATR3", "F_PWATR1", "F_PWATR2",
+		"F_PWATR3", "P_VWATR1", "F_VWATR2", "F_VWATR3", "F_WATR01","F_WATR02", "F_WATR03", "FLATHUH1",
+		"FLATHUH2", "FLATHUH3", "FLATHUH4", "FLTFLWW1", "FLTFLWW2", "FLTFLWW3", "FLTWAWA1", "FLTWAWA2", "FLTWAWA3",
+		"FLTLAVA1", "FLTLAVA2", "FLTLAVA3", "FLTLAVA4", "FLTSLUD1", "FLTSLUD2", "FLTSLUD3", "X_001", "X_002", "X_003",
+		"X_004", "X_005", "X_006", "X_007", "X_008", "X_009", "X_010", "X_011" };
+
+	bool SkyCheck()
+	{
+		return (TexMan.GetName(floorpic) == "F_SKY1");
+	}
+	
+	bool LiquidCheck()
+	{
+		string floorname = TexMan.GetName(floorpic);
+		for (int i = 0; i < liquidpics.size(); i++)
+		{
+			if (floorname == liquidpics[i])
+				return true;
+		}
+		return false;
+	}
+}
+
+class BloodDrop1 : Droplets
+{
+	Default
+	{
+		Radius 4;
+		Height 4;
+		+MISSILE
+		+NOTONAUTOMAP
+		+FORCEXYBILLBOARD
+		+NOTELEPORT
+		+BLOODLESSIMPACT
+		+FLOORCLIP
+		+WINDTHRUST
+		+NOBLOCKMAP
+		+THRUACTORS
+		+MOVEWITHSECTOR
+		//+SLIDESONWALLS
+		Friction 0.01;
+		RenderStyle "Translucent";
+		//DistanceCheck GetCVar(cl_drop1_dist);
+		MaxStepHeight 1;
+		Speed 3;
+		Scale 0.25;
+	}
+	States
+	{
+	Spawn:
+		BLUD A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		TNT1 A 0 A_ScaleVelocity(0.75);
+		TNT1 A 0 A_ScaleVelocity(GetCVar("blood_rand"));
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		goto Fall;
+	Fall:
+		TNT1 A 0 A_JumpIf(pos.z <= floorz, "Death");
+		BLUD ABCD 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		Loop;
+	Death:
+		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 AA 0 A_SpawnItemEx("BloodDrop3",0,0,4,frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(0.0,0.5),0,SXF_TRANSFERTRANSLATION, 128);
+		TNT1 A 0 A_SpawnItemEx("BloodDrop2",0,0,4,frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(0.0,0.5),0,SXF_TRANSFERTRANSLATION, 128);
+		TNT1 A 0 A_JumpIf(ceilingz - pos.z < 8.0, "Ceil");
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
+		TNT1 A 0 A_Jump(128, 2);
+		SPLT A 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1);
+		goto Splat;
+		SPLT B 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1);
+	Splat:
+		"####" "#" 1 A_SetScale(1.7 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(2.4 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(3.3 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(frandom(4.66,6.0) * GetCVar("blood_size"),0.1);
+		"####" "#" 0 A_QueueCorpse;
+		"####" "#" -1;
+	Underwater:
+		TNT1 A 0 A_SpawnItemEx("UWBloodFog",0,0,0,vel.x/3,vel.y/3,vel.z/3,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	Goodbye:
+		TNT1 A 0;
+		Stop;
+	Ceil:
+		TNT1 A 0 A_JumpIf(!SkyCheck(),1);
+		Stop;
+		TNT1 A 0 A_SpawnItemEx("CeilDripper",0,0,10.0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	Fog:
+		TNT1 A 0 A_SpawnItemEx("BloodFog",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	Cleanup:
+		"####" "#" 1 A_FadeOut(0.01,FTF_REMOVE|FTF_CLAMP);
+		Loop;
+	}
+}
+
+class DecoDroplet : BloodDrop1
+{
+	States
+	{
+	Death:
+		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 AA 0 A_SpawnItemEx("DecoDrop3",0,0,4,frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(0.0,0.5),0,SXF_TRANSFERTRANSLATION, 128);
+		TNT1 A 0 A_SpawnItemEx("DecoDrop2",0,0,4,frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(0.0,0.5),0,SXF_TRANSFERTRANSLATION, 128);
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
+		TNT1 A 0 A_Jump(128, 2);
+		SPLT A 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1);
+		goto Splat;
+		SPLT B 1 A_SetScale(1.2 * GetCVar("blood_size"),0.1);
+	Splat:
+		"####" "#" 1 A_SetScale(1.7 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(2.4 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(3.3 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(frandom(4.66,6.0) * GetCVar("blood_size"),0.1);
+		"####" "#" 0 A_QueueCorpse;
+		goto Cleanup;
+	Fog:
+		TNT1 A 0 A_SpawnItemEx("DecoFog",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	}
+}
+
+class BloodDrop2 : BloodDrop1
+{
+	Default
+	{
+		+DONTSPLASH;
+		Friction 0.02;
+		//DistanceCheck GetCVar(cl_drop2_dist);
+		Radius 3;
+		Height 3;
+		Scale 0.18;
+		Gravity 0.9;
+	}
+	States
+	{
+	Spawn:
+		BLUD A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		TNT1 A 0 A_ScaleVelocity(GetCVar("blood_rand"));
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		goto Fall;
+	Fall:
+		TNT1 A 0 A_JumpIf(pos.z <= floorz, "Death");
+		BLUD ABCD 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		Loop;
+	Death:
+		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 AAA 0 A_SpawnItemEx("BloodDrop3",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,0.5),0,SXF_TRANSFERTRANSLATION, 128);
+		TNT1 A 0 A_JumpIf(ceilingz - pos.z < 6.0, "Ceil");
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
+		TNT1 A 0 A_Jump(128, 2);
+		SPLT A 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1);
+		goto Splat;
+		SPLT B 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1);
+	Splat:
+		"####" "#" 1 A_SetScale(0.97 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(1.36 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(1.9 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(frandom(2.66,4.0) * GetCVar("blood_size"),0.1);
+		"####" "#" 0 A_QueueCorpse;
+		"####" "#" -1;
+	Underwater:
+		TNT1 A 0;
+		Stop;
+	Ceil:
+		TNT1 A 0 A_JumpIf(!SkyCheck(),1);
+		Stop;
+		TNT1 A 0 A_SpawnItemEx("CeilDrip2",0,0,10.0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	Fog:
+		TNT1 A 0 A_SpawnItemEx("BloodFog2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	}
+}
+
+class DecoDrop2 : BloodDrop2
+{
+	Default
+	{
+		Speed 2;
+	}
+	States
+	{
+	Death:
+		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 AAA 0 A_SpawnItemEx("DecoDrop3",0,0,4,frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(0.0,0.5),0,SXF_TRANSFERTRANSLATION, 128);
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
+		
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
+		TNT1 A 0 A_Jump(128, 2);
+		SPLT A 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1);
+		goto Splat;
+		SPLT B 1 A_SetScale(0.69 * GetCVar("blood_size"),0.1);
+	Splat:
+		"####" "#" 1 A_SetScale(0.97 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(1.36 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(1.9 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(frandom(2.66,4.0) * GetCVar("blood_size"),0.1);
+		"####" "#" 0 A_QueueCorpse;
+		goto Cleanup;
+	Fog:
+		TNT1 A 0 A_SpawnItemEx("DecoFog2",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	}
+}
+
+class BloodDrop3 : BloodDrop1
+{
+	Default
+	{
+		+DONTSPLASH
+		Friction 0.04;
+		//DistanceCheck GetCVar(cl_drop3_dist);
+		Radius 2;
+		Height 2;
+		Scale 0.13;
+		Gravity 0.81;
+	}
+	States
+	{
+	Spawn:
+		BLUD A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		TNT1 A 0 A_ScaleVelocity(1.25);
+		TNT1 A 0 A_ScaleVelocity(GetCVar("blood_rand"));
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		goto Fall;
+	Fall:
+		TNT1 A 0 A_JumpIf(pos.z <= floorz, "Death");
+		BLUD ABCD 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		Loop;
+	Death:
+		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 A 0 A_JumpIf(ceilingz - pos.z < 4.0, "Ceil");
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
+		TNT1 A 0 A_Jump(128, 2);
+		SPLT A 1 A_SetScale(0.17 * GetCVar("blood_size"),0.1);
+		goto Splat;
+		SPLT B 1 A_SetScale(0.17 * GetCVar("blood_size"),0.1);
+	Splat:
+		"####" "#" 1 A_SetScale(0.24 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(0.34 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(0.47 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(frandom(0.66,2.0) * GetCVar("blood_size"),0.1);
+		"####" "#" 0 A_QueueCorpse;
+		"####" "#" -1;
+	Underwater:
+		TNT1 A 0;
+		Stop;
+	Ceil:
+		TNT1 A 0 A_JumpIf(!SkyCheck(),1);
+		Stop;
+		TNT1 A 0 A_SpawnItemEx("CeilDrip3",0,0,10.0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	Fog:
+		TNT1 A 0 A_SpawnItemEx("BloodFog3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	}
+}
+
+class DecoDrop3 : BloodDrop3
+{
+	Default
+	{
+		Speed 2;
+	}
+	States
+	{
+	Death:
+		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
+		
+		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
+		TNT1 A 0 A_Jump(128, 2);
+		SPLT A 1 A_SetScale(0.17 * GetCVar("blood_size"),0.1);
+		goto Splat;
+		SPLT B 1 A_SetScale(0.17 * GetCVar("blood_size"),0.1);
+	Splat:
+		"####" "#" 1 A_SetScale(0.24 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(0.34 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(0.47 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(frandom(0.66,2.0) * GetCVar("blood_size"),0.1);
+		"####" "#" 0 A_QueueCorpse;
+		goto Cleanup;
+	Fog:
+		TNT1 A 0 A_SpawnItemEx("DecoFog3",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION);
+		Stop;
+	}
+}
+
+class ExcessDroplet : BloodDrop3
+{
+	Default
+	{
+		+DONTSPLASH
+		//DistanceCheck GetCVar(cl_drop3_dist);
+		Radius 2;
+		Height 2;
+		Scale 0.09;
+		Gravity 0.58;
+	}
+	States
+	{
+	Spawn:
+		BLUD A 1 NoDelay { alpha = GetCVar("blood_alpha"); }
+		TNT1 A 0 A_ScaleVelocity(1.5);
+		TNT1 A 0 A_ScaleVelocity(GetCVar("blood_rand"));
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		goto Fall;
+	Fall:
+		TNT1 A 0 A_JumpIf(pos.z <= floorz, "Death");
+		BLUD ABCD 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
+		Loop;
+	Death:
+		TNT1 A 0;
+		stop;
+	Underwater:
+		TNT1 A 0;
+		Stop;
+	}
+}

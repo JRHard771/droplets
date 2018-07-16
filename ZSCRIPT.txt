@@ -1,0 +1,9 @@
+version "3.3"
+
+#include "ZScript/droplets/Pools.txt"
+#include "ZScript/droplets/Gibs.txt"
+#include "ZScript/droplets/Droplets.txt"
+#include "ZScript/droplets/Squirts.txt"
+#include "ZScript/droplets/Ceiling.txt"
+#include "ZScript/droplets/Liquid.txt"
+#include "ZScript/droplets/Events.txt"
