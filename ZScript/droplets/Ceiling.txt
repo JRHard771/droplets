@@ -100,7 +100,7 @@ class CeilingDrop2 : DecoDrop2
 }
 
 class CeilingDrop3 : DecoDrop3
-{
+{	
 	Default
 	{
 		Height 1;
@@ -151,6 +151,12 @@ class CeilingDrop3 : DecoDrop3
 
 class CeilDripper : Droplets
 {
+	override void Tick()
+	{
+		Super.Tick();
+		SetOrigin((pos.x, pos.y, ceilingz - rndzoffset), false);
+	}
+	
 	Default
 	{
 		Radius 1;

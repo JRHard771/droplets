@@ -7,6 +7,8 @@ class Droplets : actor
 		"FLATHUH2", "FLATHUH3", "FLATHUH4", "FLTFLWW1", "FLTFLWW2", "FLTFLWW3", "FLTWAWA1", "FLTWAWA2", "FLTWAWA3",
 		"FLTLAVA1", "FLTLAVA2", "FLTLAVA3", "FLTLAVA4", "FLTSLUD1", "FLTSLUD2", "FLTSLUD3", "X_001", "X_002", "X_003",
 		"X_004", "X_005", "X_006", "X_007", "X_008", "X_009", "X_010", "X_011" };
+	
+	double rndzoffset;
 
 	bool SkyCheck()
 	{
@@ -22,6 +24,21 @@ class Droplets : actor
 				return true;
 		}
 		return false;
+	}
+	
+	override void BeginPlay()
+	{
+		//I'm gonna just steal this wholesale from NashMuhandes
+		rndzoffset = frandom(0.0001, 0.1000);
+		
+		Super.BeginPlay();
+	}
+	
+	override void Tick()
+	{
+		Super.Tick();
+		if (pos.z < floorz + 0.2)
+			SetOrigin((pos.x, pos.y, floorz + rndzoffset), false);
 	}
 }
 
