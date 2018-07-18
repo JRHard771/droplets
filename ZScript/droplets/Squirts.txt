@@ -43,7 +43,19 @@ class BloodSquirt : Droplets replaces Blood
 
 class BloodHitPuff : Droplets
 {
-	double user_force, user_angmom;
+	double user_scale, user_force, user_angmom;
+	
+	action void A_SpawnDroplet(double drop_size)
+	{
+		double angle = invoker.angle + frandom(-5.0,5.0);
+		double force = invoker.user_force * frandom(0.9,1.1);
+		drop_size *= frandom(0.9,1.1);
+		let droplet = BloodDroplet(Actor.Spawn('BloodDroplet',invoker.pos + (0,0,4)));
+		droplet.final_scale = drop_size;
+		droplet.scale = (drop_size, drop_size) * 0.25;
+		droplet.Vel3DFromAngle(force, angle, invoker.pitch);
+		droplet.translation = invoker.translation;
+	}
 	
 	Default
 	{
@@ -62,23 +74,34 @@ class BloodHitPuff : Droplets
 	Spawn:
 		TNT1 A 0 NoDelay
 		{
+			angle = frandom(0.0,360.0);
+			user_scale = 0.1615;
 			user_force = frandom(6.0,12.0);
-			user_angmom = frandom(-4.5,4.5);
+			user_angmom = frandom(-15.0,15.0);
 			A_SetPitch(frandom(-45.0,90.0));
 			A_PlaySound("blood/hit",0,0.3);
 			scale.x *= randompick(1,-1);
+			A_FloorSplat(2.0);
 		}
 		BLPF AABBCCDDEE 1
 		{
-			A_SpawnItemEx("BloodDrop1",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(224-GetCVar("blood_amt")*48));
+			A_SpawnDroplet(user_scale * 1.5);
 			angle += user_angmom;
-			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(160-GetCVar("blood_amt")*48));
-			angle += user_angmom;
-			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(96-GetCVar("blood_amt")*48));
-			angle += user_angmom;
-			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar("blood_amt")*64));
-			angle += user_angmom;
+			if (GetCVar("blood_amt") > 0)
+			{
+				A_SpawnDroplet(user_scale * 1.0);
+				A_SpawnDroplet(user_scale * 0.8);
+				angle += user_angmom;
+				if (GetCVar("blood_amt") > 1)
+				{
+					A_SpawnDroplet(user_scale * 0.6);
+					A_SpawnDroplet(user_scale * 0.5);
+					A_SpawnDroplet(user_scale * 0.4);
+					angle += user_angmom;
+				}
+			}
 			user_force *= 0.8;
+			user_scale *= 1.2;
 		}
 		TNT1 A 0;
 		Stop;
@@ -96,21 +119,27 @@ class BloodHitPuffMid : BloodHitPuff
 	Spawn:
 		TNT1 A 0 NoDelay
 		{
+			angle = frandom(0.0,360.0);
+			user_scale = 0.1615;
 			user_force = frandom(6.0,12.0);
-			user_angmom = frandom(-6.0,6.0);
+			user_angmom = frandom(-10.0,10.0);
 			A_SetPitch(frandom(-45.0,90.0));
 			A_PlaySound("blood/hit",0,0.2);
 			scale.x *= randompick(1,-1);
+			A_FloorSplat(1.5);
 		}
 		BLPF AABBCCDDEE 1
 		{
-			A_SpawnItemEx("BloodDrop2",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(160-GetCVar("blood_amt")*48));
+			A_SpawnDroplet(user_scale * 1.0);
 			angle += user_angmom;
-			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(96-GetCVar("blood_amt")*48));
-			angle += user_angmom;
-			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar("blood_amt")*64));
-			angle += user_angmom;
+			if (GetCVar("blood_amt") > 0)
+			{
+				A_SpawnDroplet(user_scale * 0.6);
+				A_SpawnDroplet(user_scale * 0.4);
+				angle += user_angmom;
+			}
 			user_force *= 0.8;
+			user_scale *= 1.2;
 		}
 		TNT1 A 0;
 		Stop;
@@ -128,19 +157,21 @@ class BloodHitPuffSmall : BloodHitPuff
 	Spawn:
 		TNT1 A 0 NoDelay
 		{
+			angle = frandom(0.0,360.0);
+			user_scale = 0.1615;
 			user_force = frandom(6.0,12.0);
-			user_angmom = frandom(-9.0,9.0);
+			user_angmom = frandom(-5.0,5.0);
 			A_SetPitch(frandom(-45.0,90.0));
 			A_PlaySound("blood/hit",0,0.1);
 			scale.x *= randompick(1,-1);
+			A_FloorSplat(1.0);
 		}
 		BLPF AABBCCDDEE 1
 		{
-			A_SpawnItemEx("BloodDrop3",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(96-GetCVar("blood_amt")*48));
-			angle += user_angmom;
-			A_SpawnItemEx("ExcessDroplet",0,0,4,(cos(angle)*user_force),(sin(angle)*user_force),(sin(pitch)*user_force),0,SXF_TRANSFERTRANSLATION|SXF_ABSOLUTEVELOCITY,(256-GetCVar("blood_amt")*64));
+			A_SpawnDroplet(user_scale * 0.5);
 			angle += user_angmom;
 			user_force *= 0.8;
+			user_scale *= 1.2;
 		}
 		TNT1 A 0;
 		Stop;
