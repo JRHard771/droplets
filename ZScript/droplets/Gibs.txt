@@ -28,7 +28,7 @@ class GibletA : Droplets
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL A random(7,18) A_Drip;
 		Wait;
 	Death:
@@ -42,7 +42,7 @@ class GibletB : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL B random(7,18) A_Drip;
 		Wait;
 	}
@@ -53,7 +53,7 @@ class GibletC : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL C random(7,18) A_Drip;
 		Wait;
 	}
@@ -64,7 +64,7 @@ class GibletD : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL D random(7,18) A_Drip;
 		Wait;
 	}
@@ -75,7 +75,7 @@ class GibletE : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL E random(7,18) A_Drip;
 		Wait;
 	}
@@ -86,7 +86,7 @@ class GibletF : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL F random(7,18) A_Drip;
 		Wait;
 	}
@@ -97,7 +97,7 @@ class GibletG : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL G random(7,18) A_Drip;
 		Wait;
 	}
@@ -108,7 +108,7 @@ class GibletH : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL H random(7,18) A_Drip;
 		Wait;
 	}
@@ -119,7 +119,7 @@ class GibletI : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL I random(7,18) A_Drip;
 		Wait;
 	}
@@ -130,7 +130,7 @@ class GibletJ : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL J random(7,18) A_Drip;
 		Wait;
 	}
@@ -141,7 +141,7 @@ class GibletK : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL K random(7,18) A_Drip;
 		Wait;
 	}
@@ -152,7 +152,7 @@ class GibletL : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL L random(7,18) A_Drip;
 		Wait;
 	}
@@ -163,7 +163,7 @@ class GibletM : GibletA
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_ScaleVelocity(frandom(0.5, 2.0));
+		TNT1 A 0;
 		GIBL M random(7,18) A_Drip;
 		Wait;
 	}
@@ -197,8 +197,10 @@ class GibSpray : Droplets
 {
 	action void A_DropletsGib(class<Actor> type)
 	{
-		invoker.A_SpawnItemEx(type,frandom(-4,4),frandom(-4,4),frandom(-4,4),frandom(-2,2)+invoker.vel.x/2,frandom(-2,2)
-			+invoker.vel.y/2,frandom(0,4)+invoker.vel.z/2,0,SXF_TRANSFERTRANSLATION);
+		let giblet = Actor.Spawn(type,(invoker.pos.x, invoker.pos.y, invoker.pos.z + 8));
+		giblet.Vel3DFromAngle(frandom(4,8),frandom(0,360),frandom(-90,-45));
+		giblet.vel += invoker.vel * 0.5;
+		giblet.translation = invoker.translation;
 	}
 	
 	Default

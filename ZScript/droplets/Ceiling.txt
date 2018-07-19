@@ -60,13 +60,12 @@ class CeilDripper : Droplets
 	action void A_Drip()
 	{
 		double factor = invoker.final_scale;
-		if (factor > 0.5 && frandom(0,100) > factor * 10)
+		if (factor > 0.5 && frandom(0,100) < factor * 10)
 		{
-			let droplet = CeilingDroplet(Actor.Spawn('CeilingDroplet',invoker.pos + (frandom(-1.5,1.5),frandom(-1.5,1.5),0)));
+			let droplet = CeilingDroplet(Actor.Spawn('CeilingDroplet',invoker.pos + (frandom(-4,4),frandom(-4,4),0)));
 			droplet.final_scale = factor;
 			droplet.translation = invoker.translation;
 			invoker.final_scale *= frandom(0.8333, 1.0);
-			invoker.scale = (invoker.final_scale * 5.00 * GetCVar("blood_size"),0.1);
 		}
 	}
 	

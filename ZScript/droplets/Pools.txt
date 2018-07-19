@@ -19,7 +19,9 @@ class BloodPool2 : Droplets
 		TNT1 A 18;
 		TNT1 A 0
 		{
-			if (master.vel.Length() > 0.01)
+			if (!master)
+				Destroy();
+			else if (master.vel.Length() > 0.01)
 				SetStateLabel("Spawn");
 		}
 		TNT1 A 0 { SetOrigin(master.pos, false); }

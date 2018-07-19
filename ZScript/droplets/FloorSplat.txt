@@ -21,7 +21,7 @@ class FloorSplat : Droplets
 	States
 	{
 	Spawn:
-		TNT1 A 9 NoDelay A_JumpIf(LiquidCheck(),"Null");
+		TNT1 A 12 NoDelay A_JumpIf(LiquidCheck(),"Null");
 		SPLT A 0
 		{
 			alpha = GetCVar("blood_alpha");

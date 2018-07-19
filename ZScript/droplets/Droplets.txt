@@ -47,6 +47,11 @@ class Droplets : actor
 		if (pos.z < floorz + 0.2)
 			SetOrigin((pos.x, pos.y, floorz + rndzoffset), false);
 	}
+	
+	Default
+	{
+		+DONTSPLASH
+	}
 }
 
 class BloodDroplet : Droplets
@@ -55,7 +60,7 @@ class BloodDroplet : Droplets
 	
 	action void A_SplitDroplet(class<Actor> type, double factor)
 	{
-		if (factor > 0.5)
+		if (factor > 1.0)
 		{
 			factor *= frandom(0.5, 0.8334);
 			for (int i = 0; i < 2; i++)

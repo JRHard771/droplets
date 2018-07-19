@@ -1,3 +1,0 @@
-# Droplets: Simulated Blood
-
-Droplets is not a mod intended to simply make your game gorier or to add flashy effects. It's a procedural blood mod that tries to mimic sprays and blood splatters using very basic particles, and it can be adjusted anywhere from Mild drips and squirts to Excessive, gushing sprays. Blood drips from ceilings and makes liquid surfaces, like water, foggy. This is the blood mod for the Doom player that appreciates attention to detail and added visual complexity.
