@@ -3,10 +3,10 @@
 ACTOR C_BloodSquirt : BloodSquirt replaces Blood {}
 ACTOR C_BlueBloodSquirt : BloodSquirt replaces BlueBlood
 {
-	Translation "0:255=%[0,0,0]:[0,0,0.8]"
+	Translation "0:255=%[0,0,0.8]:[0,0,0.8]"
 }
 ACTOR C_GreenBloodSquirt : BloodSquirt replaces GreenBlood
 {
-	Translation "0:255=%[0,0,0]:[0,0.78,0]"
+	Translation "0:255=%[0,0.78,0]:[0,0.78,0]"
 }
 ACTOR C_BloodSplatter : BloodSquirt replaces BloodSplatter {}

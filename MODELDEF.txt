@@ -26,7 +26,7 @@ Model CeilDripper      // Name of actor in DECORATE
    Scale 1 1 1            // Scale values
    PitchOffset 180.0
    ZOffset -0.11
-   FrameIndex SPLT A 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD A 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilDripper      // Name of actor in DECORATE
@@ -37,7 +37,7 @@ Model CeilDripper      // Name of actor in DECORATE
    Scale 1 1 1            // Scale values
    PitchOffset 180.0
    ZOffset -0.11
-   FrameIndex SPLT B 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD B 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDroplet      // Name of actor in DECORATE
@@ -47,7 +47,7 @@ Model BloodDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT A 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD A 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodDroplet      // Name of actor in DECORATE
@@ -57,7 +57,7 @@ Model BloodDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT B 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD B 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDroplet      // Name of actor in DECORATE
@@ -67,7 +67,7 @@ Model CeilingDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT A 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD A 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model CeilingDroplet      // Name of actor in DECORATE
@@ -77,7 +77,7 @@ Model CeilingDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT B 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD B 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDroplet      // Name of actor in DECORATE
@@ -87,7 +87,7 @@ Model DecoDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT A 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD A 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model DecoDroplet      // Name of actor in DECORATE
@@ -97,7 +97,7 @@ Model DecoDroplet      // Name of actor in DECORATE
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 1 1 1            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT B 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD B 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BloodPool2     // Name of actor in DECORATE
@@ -107,7 +107,7 @@ Model BloodPool2     // Name of actor in DECORATE
    Skin 0 "bloodpool3.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 15 15 15            // Scale values
    ZOffset 0.11
-   FrameIndex SPLT C 0 0         // The sprite lump, sprite frame, model index, frame number
+   FrameIndex PLUD C 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
 Model FloorSplat
@@ -117,7 +117,7 @@ Model FloorSplat
 	Skin 0 "fsplat1.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT A 0 0
+	FrameIndex PLUD A 0 0
 }
 
 Model FloorSplat
@@ -127,7 +127,7 @@ Model FloorSplat
 	Skin 0 "fsplat2.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT B 0 0
+	FrameIndex PLUD B 0 0
 }
 
 Model FloorSplat
@@ -137,7 +137,7 @@ Model FloorSplat
 	Skin 0 "fsplat3.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT C 0 0
+	FrameIndex PLUD C 0 0
 }
 
 Model FloorSplat
@@ -147,7 +147,7 @@ Model FloorSplat
 	Skin 0 "fsplat4.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT D 0 0
+	FrameIndex PLUD D 0 0
 }
 
 Model FloorSplat
@@ -157,7 +157,7 @@ Model FloorSplat
 	Skin 0 "fsplat5.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT E 0 0
+	FrameIndex PLUD E 0 0
 }
 
 Model FloorSplat
@@ -167,7 +167,7 @@ Model FloorSplat
 	Skin 0 "fsplat6.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT F 0 0
+	FrameIndex PLUD F 0 0
 }
 
 Model FloorSplat
@@ -177,5 +177,5 @@ Model FloorSplat
 	Skin 0 "fsplat7.png"
 	Scale 15 15 15
 	ZOffset 0.11
-	FrameIndex SPLT G 0 0
+	FrameIndex PLUD G 0 0
 }

@@ -1,6 +1,6 @@
 class BloodFog : Droplets
 {
-	double user_size, user_angle, user_rot;
+	double user_size, user_angle, user_rot, final_scale, lifespan;
 	
 	Default
 	{
@@ -35,8 +35,8 @@ class BloodFog : Droplets
 		TNT1 A 0 A_Wander;
 		TNT1 A 0
 		{
-			user_size += (3.0 - user_size) / 300;
-			alpha += (0.2 - alpha) / 300;
+			user_size += (final_scale - user_size) / lifespan;
+			alpha += (0.2 - alpha) / lifespan;
 			user_angle += user_rot;
 			angle = user_angle;
 		}
@@ -48,7 +48,7 @@ class BloodFog : Droplets
 		TNT1 A 0 A_FadeOut(0.0003,FTF_REMOVE|FTF_CLAMP);
 		TNT1 A 0
 		{
-			user_size += (3.0 - user_size) / 300;
+			user_size += (final_scale - user_size) / lifespan;
 			user_angle += user_rot;
 			angle = user_angle;
 		}
@@ -75,8 +75,8 @@ class DecoFog : BloodFog
 		TNT1 A 0 A_Wander;
 		TNT1 A 0
 		{
-			user_size += (3.0 - user_size) / 300;
-			alpha += (0.4 - alpha) / 300;
+			user_size += (final_scale - user_size) / lifespan;
+			alpha += (0.4 - alpha) / lifespan;
 			user_angle += user_rot;
 			angle = user_angle;
 		}
@@ -88,7 +88,7 @@ class DecoFog : BloodFog
 		TNT1 A 0 A_FadeOut(0.003,FTF_REMOVE|FTF_CLAMP);
 		TNT1 A 0
 		{
-			user_size += (3.0 - user_size) / 300;
+			user_size += (final_scale - user_size) / lifespan;
 			user_angle += user_rot;
 			angle = user_angle;
 		}
