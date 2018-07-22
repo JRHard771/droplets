@@ -1,6 +1,28 @@
 class BloodFog : Droplets
-{
-	double user_size, user_angle, user_rot, final_scale, lifespan;
+{	
+	bool waxing;
+	double user_size, user_rot, final_scale;
+	
+	action void A_FogWander()
+	{
+		invoker.scale = (invoker.user_size, 1.0);
+		invoker.A_Wander(CHF_NODIRECTIONTURN|CHF_DONTTURN);
+		invoker.angle += invoker.user_rot;
+		if (invoker.waxing)
+		{
+			invoker.user_size += (invoker.final_scale - invoker.user_size) / 100;
+			invoker.alpha += (0.15 - invoker.alpha) / 100;
+			if (invoker.alpha >= 0.1)
+				invoker.waxing = false;
+		}
+		else
+		{
+			invoker.user_size += (invoker.final_scale - invoker.user_size) / 100;
+			invoker.alpha = max(0.0, invoker.alpha + (-0.05 - invoker.alpha) / 100);
+			if (invoker.alpha == 0.0)
+				invoker.Destroy();
+		}
+	}
 	
 	Default
 	{
@@ -22,81 +44,20 @@ class BloodFog : Droplets
 	{
 	Spawn:
 		TNT1 A 0 NoDelay A_QueueCorpse;
-		TNT1 A 0
+		BFOG A 0
 		{
-			user_size = frandom(0.05,0.1);
+			frame = random(0,6);
+			waxing = true;
+			user_size = 0.01;
 			angle = frandom(0,360);
-			user_angle = angle;
-			user_rot = frandom(-1.8,1.8);
+			user_rot = frandompick(-0.45,0.45) * frandom(0.5,1.0);
 		}
 		goto Pool;
 	Pool:
-		BFOG A 1 A_SetScale(user_size, 1.0);
-		TNT1 A 0 A_Wander;
-		TNT1 A 0
-		{
-			user_size += (final_scale - user_size) / lifespan;
-			alpha += (0.2 - alpha) / lifespan;
-			user_angle += user_rot;
-			angle = user_angle;
-		}
-		TNT1 A 0 A_JumpIf(alpha < 0.15, "Pool");
-		goto Done;
-	Done:
-		BFOG A 1 A_SetScale(user_size, 1.0);
-		TNT1 A 0 A_Wander;
-		TNT1 A 0 A_FadeOut(0.0003,FTF_REMOVE|FTF_CLAMP);
-		TNT1 A 0
-		{
-			user_size += (final_scale - user_size) / lifespan;
-			user_angle += user_rot;
-			angle = user_angle;
-		}
+		BFOG "#" 1 A_FogWander;
 		Loop;
 	}
 }
-
-class DecoFog : BloodFog
-{
-	States
-	{
-	Spawn:
-		TNT1 A 0;
-		TNT1 A 0
-		{
-			user_size = frandom(0.05,0.1);
-			angle = frandom(0,360);
-			user_angle = angle;
-			user_rot = frandom(-1.8,1.8);
-		}
-		goto Pool;
-	Pool:
-		BFOG A 1 A_SetScale(user_size, 1.0);
-		TNT1 A 0 A_Wander;
-		TNT1 A 0
-		{
-			user_size += (final_scale - user_size) / lifespan;
-			alpha += (0.4 - alpha) / lifespan;
-			user_angle += user_rot;
-			angle = user_angle;
-		}
-		TNT1 A 0 A_JumpIf(alpha < 0.15, "Pool");
-		goto Done;
-	Done:
-		BFOG A 1 A_SetScale(user_size, 1.0);
-		TNT1 A 0 A_Wander;
-		TNT1 A 0 A_FadeOut(0.003,FTF_REMOVE|FTF_CLAMP);
-		TNT1 A 0
-		{
-			user_size += (final_scale - user_size) / lifespan;
-			user_angle += user_rot;
-			angle = user_angle;
-		}
-		Loop;
-	}
-}
-
-
 
 class UWBloodFog : Droplets
 {

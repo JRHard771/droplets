@@ -10,3 +10,5 @@ ACTOR C_GreenBloodSquirt : BloodSquirt replaces GreenBlood
 	Translation "0:255=%[0,0.78,0]:[0,0.78,0]"
 }
 ACTOR C_BloodSplatter : BloodSquirt replaces BloodSplatter {}
+
+ACTOR C_HideousTrail : DropletsTrail replaces HDBloodTrailFloor {}

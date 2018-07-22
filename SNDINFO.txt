@@ -11,3 +11,23 @@ $limit blood/bh3 1 128
 $limit blood/bh4 1 128
 
 $random blood/hit { blood/bh1 blood/bh2 blood/bh3 blood/bh4 }
+
+blood/drp1	drip1
+blood/drp2	drip2
+blood/drp3	drip3
+blood/drp4	drip4
+blood/drp5	drip5
+blood/drp6	drip6
+blood/drp7	drip7
+
+$limit blood/drp1 1 16
+$limit blood/drp2 1 16
+$limit blood/drp3 1 16
+$limit blood/drp4 1 16
+$limit blood/drp5 1 16
+$limit blood/drp6 1 16
+$limit blood/drp7 1 16
+
+$random blood/drip { blood/drp1 blood/drp2 blood/drp3 blood/drp4 blood/drp5 blood/drp6 blood/drp7 }
+
+//$attenuation blood/drip 2.0

@@ -34,7 +34,8 @@ class DropletsEventHandler : EventHandler
 		if (!blood_pools)
 			return;
 		
-		let splat = FloorSplat(Actor.Spawn('FloorSplat',(mo.pos.x, mo.pos.y, mo.floorz)));
+		let splat = FloorSplat(Actor.Spawn('FloorSplat',mo.pos + mo.vel * 10.0));
+		splat.SetOrigin((splat.pos.x, splat.pos.y, splat.floorz),false);
 		splat.final_scale = 1.5;
 		splat.translation = mo.bloodtranslation;
 		
