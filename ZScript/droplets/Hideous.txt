@@ -4,7 +4,7 @@ class DropletsTrail : BloodDroplet
 	States
 	{
 	Spawn:
-		BLUD A 1 NoDelay
+		TNT1 A 1 NoDelay
 		{
 			alpha = GetCVar("blood_alpha");
 			final_scale = frandom(0.125,0.375);

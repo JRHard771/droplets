@@ -8,7 +8,7 @@ class Droplets : actor
 		"FLTLAVA1", "FLTLAVA2", "FLTLAVA3", "FLTLAVA4", "FLTSLUD1", "FLTSLUD2", "FLTSLUD3", "X_001", "X_002", "X_003",
 		"X_004", "X_005", "X_006", "X_007", "X_008", "X_009", "X_010", "X_011" };
 	
-	double rndzoffset;
+	double last_vel, rndzoffset;
 
 	bool SkyCheck()
 	{
@@ -53,6 +53,7 @@ class Droplets : actor
 	
 	override void Tick()
 	{
+		last_vel = vel.length();
 		Super.Tick();
 		if (pos.z < floorz + 0.2)
 			SetOrigin((pos.x, pos.y, floorz + rndzoffset), false);
@@ -115,20 +116,20 @@ class BloodDroplet : Droplets
 	States
 	{
 	Spawn:
-		BLUD A 1 NoDelay { alpha = GetCVar("blood_alpha"); gravity = GetCVar("blood_grav"); }
+		DROP A 1 NoDelay { alpha = GetCVar("blood_alpha"); gravity = GetCVar("blood_grav"); }
 		TNT1 A 0 A_ScaleVelocity(GetCVar("blood_rand"));
 		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
 		goto Fall;
 	Fall:
 		TNT1 A 0 A_JumpIf(pos.z <= floorz, "Death");
-		BLUD ABCD 2;
+		DROP ABCD 2;
 		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
 		Loop;
 	Death:
 		TNT1 A 0 { bWINDTHRUST = false; }
 		TNT1 A 0 A_JumpIf(ceilingz - pos.z < 8.0, "Ceil");
 		TNT1 A 0 A_SplitDroplet('BloodDroplet', scale.x);
-		TNT1 A 0 A_PlaySound("blood/drip",volume: frandom(0.0, final_scale * final_scale));
+		TNT1 A 0 A_PlaySound("blood/drip",volume: final_scale * last_vel * 0.0625);
 		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
 		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
 		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
@@ -159,9 +160,6 @@ class BloodDroplet : Droplets
 	Fog:
 		TNT1 A 0 A_BloodFog('BloodFog');
 		Stop;
-	Cleanup:
-		"####" "#" 1 A_FadeOut(0.01,FTF_REMOVE|FTF_CLAMP);
-		Loop;
 	}
 }
 
@@ -172,7 +170,7 @@ class DecoDroplet : BloodDroplet
 	Death:
 		TNT1 A 0 { bWINDTHRUST = false; }
 		TNT1 A 0 A_SplitDroplet('DecoDroplet', scale.x);
-		TNT1 A 0 A_PlaySound("blood/drip",volume: frandom(0.0, final_scale * final_scale));
+		TNT1 A 0 A_PlaySound("blood/drip",volume: final_scale * last_vel * 0.0625);
 		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
 		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
 		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
@@ -186,10 +184,12 @@ class DecoDroplet : BloodDroplet
 		"####" "#" 1 A_SetScale(final_scale * 4.2 * GetCVar("blood_size"),0.1);
 		"####" "#" 1 A_SetScale(final_scale * 4.73 * GetCVar("blood_size"),0.1);
 		"####" "#" 1 A_SetScale(final_scale * 5.00 * GetCVar("blood_size"),0.1);
-		"####" "#" 0 A_QueueCorpse;
 		goto Cleanup;
 	Fog:
 		TNT1 A 0 A_BloodFog('BloodFog');
 		Stop;
+	Cleanup:
+		"####" "#" 1 A_FadeOut(0.002,FTF_REMOVE|FTF_CLAMP);
+		Loop;
 	}
 }
