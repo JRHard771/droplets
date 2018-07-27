@@ -55,7 +55,7 @@ class RunnySpot : Droplets
 		{
 			if (scale.y < user_scale * 2.0)
 			{
-				scale.y += ((user_scale * 2.0) + 0.05 - scale.y) * 0.001;
+				scale.y += ((user_scale * 2.5) - scale.y) * 0.002;
 				return resolveState(null);
 			}
 			else
@@ -63,7 +63,6 @@ class RunnySpot : Droplets
 		}
 		Loop;
 	Done:
-		WBLD "#" 1 A_PlaySound();
 		WBLD "#" -1;
 		stop;
 	}

@@ -73,7 +73,7 @@ class BloodDroplet : Droplets
 	{
 		FLineTraceData linedat;
 		invoker.A_FaceMovementDirection();
-		invoker.LineTrace(invoker.angle,invoker.vel.length(),invoker.pitch,data: linedat);
+		invoker.LineTrace(invoker.angle,invoker.vel.length() + invoker.radius,invoker.pitch,data: linedat);
 		if (linedat.HitType == TRACE_HitWall)
 		{
 			let splat = WallBloodSpot(Actor.Spawn('WallBloodSpot',linedat.HitLocation));
