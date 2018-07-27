@@ -69,6 +69,28 @@ class BloodDroplet : Droplets
 {
 	double final_scale;
 	
+	action state A_WallSplat()
+	{
+		FLineTraceData linedat;
+		invoker.A_FaceMovementDirection();
+		invoker.LineTrace(invoker.angle,invoker.vel.length(),invoker.pitch,data: linedat);
+		if (linedat.HitType == TRACE_HitWall)
+		{
+			let splat = WallBloodSpot(Actor.Spawn('WallBloodSpot',linedat.HitLocation));
+			Vector3 offset = (invoker.pos - splat.pos).Unit();
+			offset *= frandom(0.99,1.01);
+			splat.SetOrigin(splat.pos + offset, false);
+			splat.user_scale = invoker.final_scale * 0.5;
+			splat.translation = invoker.translation;
+			splat.angle = VectorAngle(
+				linedat.HitLine.v2.p.x - linedat.HitLine.v1.p.x,
+				linedat.HitLine.v2.p.y - linedat.HitLine.v1.p.y)
+				+ 90.0;
+			return resolveState("Death");
+		}
+		return resolveState(null);
+	}
+	
 	action void A_SplitDroplet(class<Actor> type, double factor)
 	{
 		if (factor > 1.0)
@@ -122,7 +144,7 @@ class BloodDroplet : Droplets
 		goto Fall;
 	Fall:
 		TNT1 A 0 A_JumpIf(pos.z <= floorz, "Death");
-		DROP ABCD 2;
+		DROP ABCD 2 A_WallSplat();
 		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
 		Loop;
 	Death:
@@ -130,7 +152,7 @@ class BloodDroplet : Droplets
 		TNT1 A 0 A_JumpIf(ceilingz - pos.z < 8.0, "Ceil");
 		TNT1 A 0 A_SplitDroplet('BloodDroplet', scale.x);
 		TNT1 A 0 A_PlaySound("blood/drip",volume: final_scale * last_vel * 0.0625);
-		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Null");
 		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
 		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
 		PLUD "#" 1
@@ -148,9 +170,6 @@ class BloodDroplet : Droplets
 		"####" "#" -1;
 	Underwater:
 		TNT1 A 0 A_SpawnItemEx("UWBloodFog",0,0,0,vel.x/3,vel.y/3,vel.z/3,0,SXF_TRANSFERTRANSLATION);
-		Stop;
-	Goodbye:
-		TNT1 A 0;
 		Stop;
 	Ceil:
 		TNT1 A 0 A_JumpIf(!SkyCheck(),1);
@@ -171,7 +190,7 @@ class DecoDroplet : BloodDroplet
 		TNT1 A 0 { bWINDTHRUST = false; }
 		TNT1 A 0 A_SplitDroplet('DecoDroplet', scale.x);
 		TNT1 A 0 A_PlaySound("blood/drip",volume: final_scale * last_vel * 0.0625);
-		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Goodbye");
+		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Wall");
 		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
 		TNT1 A 0 A_SetAngle(frandom(0.0,360.0));
 		PLUD "#" 1

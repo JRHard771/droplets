@@ -1,0 +1,70 @@
+class WallBloodSpot : Droplets
+{
+	double user_scale;
+	
+	default
+	{
+		+NOINTERACTION
+		+WALLSPRITE
+		+ROLLSPRITE
+		+NOGRAVITY
+		RenderStyle "Translucent";
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay
+		{
+			A_QueueCorpse();
+			let run = RunnySpot(Actor.Spawn('RunnySpot',pos));
+			run.user_scale = user_scale;
+			run.translation = translation;
+			run.angle = angle;
+			frame = random(3,5);
+			scale = (user_scale, user_scale);
+			A_SetRoll(frandom(0.0,360.0));
+		}
+		WBLD "#" -1;
+		stop;
+	}
+}
+
+class RunnySpot : Droplets
+{
+	double user_scale;
+	
+	default
+	{
+		+NOINTERACTION
+		+WALLSPRITE
+		+NOGRAVITY
+		RenderStyle "Translucent";
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay
+		{
+			A_QueueCorpse();
+			frame = random(0,2);
+			scale = (user_scale,0.001);
+		}
+		goto Run;
+	Run:
+		WBLD "#" 1
+		{
+			if (scale.y < user_scale * 2.0)
+			{
+				scale.y += ((user_scale * 2.0) + 0.05 - scale.y) * 0.001;
+				return resolveState(null);
+			}
+			else
+				return resolveState("Done");
+		}
+		Loop;
+	Done:
+		WBLD "#" 1 A_PlaySound();
+		WBLD "#" -1;
+		stop;
+	}
+}
