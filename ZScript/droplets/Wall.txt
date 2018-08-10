@@ -56,9 +56,9 @@ class RunnySpot : Droplets
 	Run:
 		WBLD "#" 1
 		{
-			if (scale.y < user_scale * 2.0)
+			if (scale.y < user_scale * 1.0)
 			{
-				scale.y += ((user_scale * 2.5) - scale.y) * 0.002;
+				scale.y += ((user_scale * 1.5) - scale.y) * 0.002;
 				return resolveState(null);
 			}
 			else
