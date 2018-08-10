@@ -1,27 +1,21 @@
 class BloodFog : Droplets
-{	
-	bool waxing;
+{
 	double user_size, user_rot, final_scale;
+	
+	virtual void ReduceFog()
+	{
+		user_size += (final_scale - user_size) / 300;
+		alpha = max(0.0, alpha + (-0.05 - alpha) / 150);
+	}
 	
 	action void A_FogWander()
 	{
 		invoker.scale = (invoker.user_size, 1.0);
 		invoker.A_Wander(CHF_NODIRECTIONTURN|CHF_DONTTURN);
 		invoker.angle += invoker.user_rot;
-		if (invoker.waxing)
-		{
-			invoker.user_size += (invoker.final_scale - invoker.user_size) / 100;
-			invoker.alpha += (0.15 - invoker.alpha) / 100;
-			if (invoker.alpha >= 0.1)
-				invoker.waxing = false;
-		}
-		else
-		{
-			invoker.user_size += (invoker.final_scale - invoker.user_size) / 100;
-			invoker.alpha = max(0.0, invoker.alpha + (-0.05 - invoker.alpha) / 100);
-			if (invoker.alpha == 0.0)
-				invoker.Destroy();
-		}
+		invoker.ReduceFog();
+		if (invoker.alpha == 0.0)
+			invoker.Destroy();
 	}
 	
 	Default
@@ -38,7 +32,7 @@ class BloodFog : Droplets
 		Speed 0.12;
 		MaxStepHeight 1;
 		RenderStyle "Translucent";
-		Alpha 0;
+		Alpha 0.3333;
 	}
 	States
 	{
@@ -47,8 +41,7 @@ class BloodFog : Droplets
 		BFOG A 0
 		{
 			frame = random(0,6);
-			waxing = true;
-			user_size = 0.01;
+			user_size = 0.1;
 			angle = frandom(0,360);
 			user_rot = frandompick(-0.45,0.45) * frandom(0.5,1.0);
 		}

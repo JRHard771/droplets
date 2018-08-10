@@ -1,4 +1,4 @@
-class Droplets : actor
+class Droplets : actor abstract
 {
 	static const String[] liquidpics = { "NUKAGE1", "NUKAGE2", "NUKAGE3", "BLOOD1", "BLOOD2", "BLOOD3", "SLIME01",
 		"SLIME02", "SLIME03", "SLIME04", "SLIME05", "SLIME06", "SLIME07", "SLIME08", "LAVA1", "LAVA2", "LAVA3", "LAVA4",
@@ -73,7 +73,14 @@ class BloodDroplet : Droplets
 	{
 		FLineTraceData linedat;
 		invoker.A_FaceMovementDirection();
-		invoker.LineTrace(invoker.angle,invoker.vel.length() + invoker.radius,invoker.pitch,data: linedat);
+		invoker.LineTrace
+		(
+			invoker.angle,
+			invoker.vel.length() + invoker.radius,
+			invoker.pitch,
+			TRF_THRUACTORS|TRF_NOSKY,
+			data: linedat
+		);
 		if (linedat.HitType == TRACE_HitWall)
 		{
 			let splat = WallBloodSpot(Actor.Spawn('WallBloodSpot',linedat.HitLocation));
