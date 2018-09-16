@@ -8,7 +8,11 @@ class Droplets : actor abstract
 		"FLTLAVA1", "FLTLAVA2", "FLTLAVA3", "FLTLAVA4", "FLTSLUD1", "FLTSLUD2", "FLTSLUD3", "X_001", "X_002", "X_003",
 		"X_004", "X_005", "X_006", "X_007", "X_008", "X_009", "X_010", "X_011" };
 	
+	bool bSnapToFloor;
+	
 	double last_vel, rndzoffset;
+	
+	property SnapToFloor : bSnapToFloor;
 
 	bool SkyCheck()
 	{
@@ -55,13 +59,14 @@ class Droplets : actor abstract
 	{
 		last_vel = vel.length();
 		Super.Tick();
-		if (pos.z < floorz + 0.2)
+		if (bSnapToFloor && pos.z < floorz + 0.2)
 			SetOrigin((pos.x, pos.y, floorz + rndzoffset), false);
 	}
 	
 	Default
 	{
 		+DONTSPLASH
+		Droplets.SnapToFloor true;
 	}
 }
 

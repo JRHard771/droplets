@@ -92,7 +92,7 @@ class CeilDripper : Droplets
 		"####" "#" 1 A_SetScale(final_scale * 5.00 * GetCVar("blood_size"),0.1);
 		goto Drippy;
 	Drippy:
-		"####" "#" 7 A_Drip;
+		"####" "#" random(6,8) A_Drip;
 		goto Drippy;
 	}
 }

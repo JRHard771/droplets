@@ -24,6 +24,7 @@ class GibletA : Droplets
 		Height 4;
 		DeathHeight 4;
 		Speed 4;
+		Droplets.SnapToFloor false;
 	}
 	States
 	{
