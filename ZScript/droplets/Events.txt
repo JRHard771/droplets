@@ -19,10 +19,10 @@ class DropletsEventHandler : EventHandler
 	override void WorldThingDamaged(WorldEvent e)
 	{
 		let mo = e.Thing;
-		if (!mo.bISMONSTER || mo.bNOBLOOD || e.Inflictor.bNoExtremeDeath)
+		if (!mo.bISMONSTER || mo.bNOBLOOD || (e.Inflictor && e.Inflictor.bNoExtremeDeath))
 			return;
 			
-		if (blood_gibs && (mo.health < mo.GetGibHealth() || e.Inflictor.bExtremeDeath) && (mo.FindState("XDeath") || mo.FindState("Death.Extreme")))
+		if (blood_gibs && (mo.health < mo.GetGibHealth() || (e.Inflictor && e.Inflictor.bExtremeDeath)) && (mo.FindState("XDeath") || mo.FindState("Death.Extreme")))
 		{
 			let giblets = Actor.Spawn('GibSpray',mo.pos + (0,0,32));
 			giblets.master = mo;
