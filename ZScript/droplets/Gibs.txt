@@ -1,5 +1,7 @@
 class GibletA : Droplets
 {
+	double rollFactor;
+
 	action void A_Drip()
 	{
 		let droplet = BloodDroplet(Actor.Spawn('BloodDroplet',invoker.pos + (frandom(-1.5,1.5),frandom(-1.5,1.5),0)));
@@ -7,6 +9,19 @@ class GibletA : Droplets
 		droplet.scale = (droplet.final_scale, droplet.final_scale) * 0.25;
 		droplet.vel = invoker.vel;
 		droplet.translation = invoker.translation;
+	}
+	
+	override void BeginPlay()
+	{
+		rollFactor = frandom(-45.0,45.0);
+		gravity = blood_grav;
+	}
+	
+	override void Tick()
+	{
+		if (vel.length() > 0)
+			A_SetRoll(roll + rollFactor, SPF_INTERPOLATE);
+		Super.Tick();
 	}
 	
 	Default
@@ -18,8 +33,9 @@ class GibletA : Droplets
 		+NOBLOCKMAP
 		+MOVEWITHSECTOR
 		+THRUACTORS
-		BounceFactor 0.15;
-		Gravity 0.667;
+		+ROLLSPRITE
+		BounceFactor 0.083333;
+		Gravity 1.0;
 		Radius 2;
 		Height 4;
 		DeathHeight 4;
@@ -199,8 +215,9 @@ class GibSpray : Droplets
 	action void A_DropletsGib(class<Actor> type)
 	{
 		let giblet = Actor.Spawn(type,(invoker.pos.x, invoker.pos.y, invoker.pos.z + 8));
-		giblet.Vel3DFromAngle(frandom(4,8),frandom(0,360),frandom(-90,-45));
-		giblet.vel += invoker.vel * 0.5;
+		giblet.Vel3DFromAngle(frandom(4,8),frandom(0,360),frandom(-90,0));
+		double ratio = frandom(0.5,1.0);
+		giblet.vel = (giblet.vel * ratio) + (invoker.vel * (1.0 - ratio));
 		giblet.translation = invoker.translation;
 	}
 	
