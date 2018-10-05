@@ -150,8 +150,8 @@ class BloodDroplet : Droplets
 	States
 	{
 	Spawn:
-		DROP A 1 NoDelay { alpha = GetCVar("blood_alpha"); gravity = GetCVar("blood_grav"); }
-		TNT1 A 0 A_ScaleVelocity(GetCVar("blood_rand"));
+		DROP A 1 NoDelay { alpha = blood_alpha; gravity = blood_grav; }
+		TNT1 A 0 A_ScaleVelocity(blood_rand);
 		TNT1 A 0 A_JumpIf(waterlevel > 0, "Underwater");
 		goto Fall;
 	Fall:
@@ -170,14 +170,14 @@ class BloodDroplet : Droplets
 		PLUD "#" 1
 		{
 			frame = random(0,2);
-			A_SetScale(final_scale * GetCVar("blood_size"),0.1);
+			A_SetScale(final_scale * blood_size,0.1);
 		}
 		goto Splat;
 	Splat:
-		"####" "#" 1 A_SetScale(final_scale * 3.13 * GetCVar("blood_size"),0.1);
-		"####" "#" 1 A_SetScale(final_scale * 4.2 * GetCVar("blood_size"),0.1);
-		"####" "#" 1 A_SetScale(final_scale * 4.73 * GetCVar("blood_size"),0.1);
-		"####" "#" 1 A_SetScale(final_scale * 5.00 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(final_scale * 3.13 * blood_size,0.1);
+		"####" "#" 1 A_SetScale(final_scale * 4.2 * blood_size,0.1);
+		"####" "#" 1 A_SetScale(final_scale * 4.73 * blood_size,0.1);
+		"####" "#" 1 A_SetScale(final_scale * 5.00 * blood_size,0.1);
 		"####" "#" 0 A_QueueCorpse;
 		"####" "#" -1;
 	Underwater:
@@ -208,13 +208,13 @@ class DecoDroplet : BloodDroplet
 		PLUD "#" 1
 		{
 			frame = random(0,2);
-			A_SetScale(final_scale * GetCVar("blood_size"),0.1);
+			A_SetScale(final_scale * blood_size,0.1);
 		}
 	Splat:
-		"####" "#" 1 A_SetScale(final_scale * 3.13 * GetCVar("blood_size"),0.1);
-		"####" "#" 1 A_SetScale(final_scale * 4.2 * GetCVar("blood_size"),0.1);
-		"####" "#" 1 A_SetScale(final_scale * 4.73 * GetCVar("blood_size"),0.1);
-		"####" "#" 1 A_SetScale(final_scale * 5.00 * GetCVar("blood_size"),0.1);
+		"####" "#" 1 A_SetScale(final_scale * 3.13 * blood_size,0.1);
+		"####" "#" 1 A_SetScale(final_scale * 4.2 * blood_size,0.1);
+		"####" "#" 1 A_SetScale(final_scale * 4.73 * blood_size,0.1);
+		"####" "#" 1 A_SetScale(final_scale * 5.00 * blood_size,0.1);
 		goto Cleanup;
 	Fog:
 		TNT1 A 0 A_BloodFog('BloodFog');

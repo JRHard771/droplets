@@ -20,7 +20,7 @@ class GibletA : Droplets
 	override void Tick()
 	{
 		if (vel.length() > 0)
-			A_SetRoll(roll + rollFactor, SPF_INTERPOLATE);
+			roll += rollFactor;
 		Super.Tick();
 	}
 	
@@ -28,13 +28,16 @@ class GibletA : Droplets
 	{
 		+MISSILE
 		+FLOORCLIP
-		+BOUNCEONWALLS
 		+FORCEXYBILLBOARD
 		+NOBLOCKMAP
 		+MOVEWITHSECTOR
 		+THRUACTORS
+		+INTERPOLATEANGLES
 		+ROLLSPRITE
-		BounceFactor 0.083333;
+		+USEBOUNCESTATE
+		BounceType "Doom";
+		BounceFactor 0.416667;
+		WallBounceFactor 0.833333;
 		Gravity 1.0;
 		Radius 2;
 		Height 4;
@@ -49,8 +52,19 @@ class GibletA : Droplets
 		GIBL A random(7,18) A_Drip;
 		Wait;
 	Death:
-		"----" A -1 A_FloorSplat(1.0);
+		"----" A -1
+		{
+			A_FloorSplat(1.0);
+			bFlatSprite = true;
+			angle = frandom(0,360);
+			pitch = 0;
+			roll = 0;
+		}
 		Stop;
+	Bounce:
+		"----" A 1 { rollFactor *= -0.833333; }
+		"----" A random(6,17) A_Drip;
+		Wait;
 	}
 }
 
