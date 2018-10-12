@@ -29,7 +29,6 @@ class BloodPool2 : Droplets
 		{
 			SetOrigin(master.pos, false);
 			final_scale = (master.radius) * 0.05;
-			Console.PrintF("Bleeding...");
 		}
 		TNT1 A 0 A_JumpIf(LiquidCheck(),"Fog");
 		TNT1 A 0 { scale_percent = 0.0025; }
@@ -41,7 +40,6 @@ class BloodPool2 : Droplets
 		TNT1 A 0 A_JumpIf(scale_percent < 1.0, "Pool");
 		goto Done;
 	Done:
-		TNT1 A 0 { Console.PrintF("Done!"); }
 		PLUD C -1;
 		Stop;
 	Fog:
