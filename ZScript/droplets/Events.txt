@@ -19,12 +19,16 @@ class DropletsEventHandler : EventHandler
 	override void WorldThingDamaged(WorldEvent e)
 	{
 		let mo = e.Thing;
-		if (!mo.bISMONSTER || mo.bNOBLOOD || (e.Inflictor && e.Inflictor.bNoExtremeDeath))
+		if (!mo.bISMONSTER || mo.bNOBLOOD)
 			return;
 		
 		if (mo.health <= 0)
 		{
-			if (blood_gibs && (mo.health < mo.GetGibHealth() || (e.Inflictor && e.Inflictor.bExtremeDeath)) && (mo.FindState("XDeath") || mo.FindState("Death.Extreme")))
+			if (blood_gibs &&
+				!(e.Inflictor && e.Inflictor.bNoExtremeDeath) &&
+				(mo.health < mo.GetGibHealth() ||
+				(e.Inflictor && e.Inflictor.bExtremeDeath)) &&
+				(mo.FindState("XDeath") || mo.FindState("Death.Extreme")))
 			{
 				let giblets = Actor.Spawn('GibSpray',mo.pos + (0,0,32));
 				giblets.master = mo;
@@ -34,11 +38,6 @@ class DropletsEventHandler : EventHandler
 				
 			if (!blood_pools)
 				return;
-
-			let splat = FloorSplat(Actor.Spawn('FloorSplat',mo.pos + mo.vel * 10.0));
-			splat.SetOrigin((splat.pos.x, splat.pos.y, splat.floorz),false);
-			splat.final_scale = 1.5;
-			splat.translation = mo.bloodtranslation;
 			
 			let pool = Actor.Spawn('BloodPool2',mo.pos);
 			pool.translation = mo.bloodtranslation;

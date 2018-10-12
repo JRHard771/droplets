@@ -33,7 +33,11 @@ class FloorSplat : Droplets
 		"####" "#" 1 A_SetScale(final_scale * 0.946 * GetCVar("blood_size"),0.1);
 		"####" "#" 1 A_SetScale(final_scale * 1.00 * GetCVar("blood_size"),0.1);
 	Done:
-//		"####" "#" 0 A_QueueCorpse;
+		"####" "#" 0
+		{
+			if (!random(0,1))
+				A_QueueCorpse();
+		}
 		"####" "#" -1;
 		Stop;
 	}
