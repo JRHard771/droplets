@@ -25,10 +25,11 @@ class DropletsEventHandler : EventHandler
 		if (mo.health <= 0)
 		{
 			if (blood_gibs &&
-				!(e.Inflictor && e.Inflictor.bNoExtremeDeath) &&
+				(!(e.Inflictor && e.Inflictor.bNoExtremeDeath) &&
 				(mo.health < mo.GetGibHealth() ||
 				(e.Inflictor && e.Inflictor.bExtremeDeath)) &&
-				(mo.FindState("XDeath") || mo.FindState("Death.Extreme")))
+				(mo.FindState("XDeath") || mo.FindState("Death.Extreme"))) ||
+				blood_alwaysgib)
 			{
 				let giblets = Actor.Spawn('GibSpray',mo.pos + (0,0,32));
 				giblets.master = mo;

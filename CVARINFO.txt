@@ -5,6 +5,7 @@ server float blood_grav = 1.0;
 server int blood_amt = 1;
 server bool blood_pools = false;
 server bool blood_gibs = false;
+server bool blood_alwaysgib = false;
 
 user int cl_drop3_dist = 384;
 user int cl_drop2_dist = 768;
