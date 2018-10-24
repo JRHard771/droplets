@@ -1,6 +1,35 @@
 class WallBloodSpot : Droplets
 {
+	Vector2 sector_pos;
+	double[2] last_z; //(floor, ceiling)
 	double user_scale;
+	bool is_upper, is_lower;
+	
+	override void PostBeginPlay()
+	{
+		Super.PostBeginPlay();
+		sector_pos = (pos.xy - AngleToVector(angle,4.0));
+		[last_z[0], last_z[1]] = GetSectorZ();
+	}
+	
+	override void Tick()
+	{
+		double new_z[2];
+		Super.Tick();
+		[new_z[0], new_z[1]] = GetSectorZ();
+		if (pos.z < last_z[0] && last_z[0] != new_z[0])
+			SetOrigin((pos.xy, pos.z + (new_z[0] - last_z[0])), true);
+		else if (pos.z > last_z[1] && last_z[1] != new_z[1])
+			SetOrigin((pos.xy, pos.z + (new_z[1] - last_z[1])), true);
+		last_z[0] = new_z[0];
+		last_z[1] = new_z[1];
+	}
+	
+	double, double GetSectorZ()
+	{
+		return GetZAt(sector_pos.x, sector_pos.y, flags: GZF_ABSOLUTEPOS),
+			GetZAt(sector_pos.x, sector_pos.y, flags: GZF_CEILING | GZF_ABSOLUTEPOS);
+	}
 	
 	default
 	{
@@ -17,6 +46,7 @@ class WallBloodSpot : Droplets
 		{
 			A_QueueCorpse();
 			let run = RunnySpot(Actor.Spawn('RunnySpot',pos));
+			run.wbs = self;
 			run.user_scale = user_scale;
 			run.translation = translation;
 			run.angle = angle;
@@ -33,7 +63,15 @@ class WallBloodSpot : Droplets
 
 class RunnySpot : Droplets
 {
+	WallBloodSpot wbs;
 	double user_scale;
+	bool is_upper, is_lower;
+	
+	override void Tick()
+	{
+		Super.Tick();
+		SetOrigin(wbs.pos,true);
+	}
 	
 	default
 	{

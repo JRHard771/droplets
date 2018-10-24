@@ -97,7 +97,7 @@ class BloodDroplet : Droplets
 			splat.angle = VectorAngle(
 				linedat.HitLine.v2.p.x - linedat.HitLine.v1.p.x,
 				linedat.HitLine.v2.p.y - linedat.HitLine.v1.p.y)
-				+ 90.0;
+				- 90.0;
 			return resolveState("Death");
 		}
 		return resolveState(null);
