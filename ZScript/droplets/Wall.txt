@@ -70,7 +70,10 @@ class RunnySpot : Droplets
 	override void Tick()
 	{
 		Super.Tick();
-		SetOrigin(wbs.pos,true);
+		if (wbs)
+			SetOrigin(wbs.pos,true);
+		else
+			Destroy();
 	}
 	
 	default
