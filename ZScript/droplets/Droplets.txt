@@ -32,14 +32,14 @@ class Droplets : actor abstract
 	
 	action void A_FloorSplat(double size)
 	{
-		let splat = FloorSplat(Actor.Spawn('FloorSplat',(invoker.pos.x, invoker.pos.y, invoker.floorz)));
+		let splat = FloorSplat(Actor.Spawn('FloorSplat',(invoker.pos.xy, invoker.floorz)));
 		splat.final_scale = size;
-		splat.translation = invoker.translation;
+		splat.translation = translation;
 	}
 	
 	action void A_BloodFog(class<Actor> type, double size = 0.0)
 	{
-		let fog = BloodFog(Actor.Spawn(type,(invoker.pos.x, invoker.pos.y, invoker.floorz)));
+		let fog = BloodFog(Actor.Spawn(type,(invoker.pos.xy, invoker.floorz)));
 		if (size > 0)
 			fog.final_scale = size;
 		else

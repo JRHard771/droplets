@@ -26,5 +26,6 @@ OptionMenu "BloodOptions"
 	StaticText " "
 	Option "Spawn Blood Pools", "blood_pools", "onoff"
 	Option "Spawn Giblets", "blood_gibs", "onoff"
+	Option "Chunky Mode", "blood_chunky", "onoff"
 	Option "Ludicrous Gibs", "blood_alwaysgib", "onoff"
 }
