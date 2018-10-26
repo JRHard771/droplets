@@ -92,7 +92,7 @@ class BloodDroplet : Droplets
 			Vector3 offset = (invoker.pos - splat.pos).Unit();
 			offset *= frandom(0.99,1.01);
 			splat.SetOrigin(splat.pos + offset, false);
-			splat.user_scale = invoker.final_scale * 0.5;
+			splat.user_scale = invoker.final_scale * 0.166667 + 0.083333;
 			splat.translation = invoker.translation;
 			splat.angle = VectorAngle(
 				linedat.HitLine.v2.p.x - linedat.HitLine.v1.p.x,
@@ -100,20 +100,21 @@ class BloodDroplet : Droplets
 				- 90.0;
 			return resolveState("Death");
 		}
+		invoker.vel.xy *= 0.94;
 		return resolveState(null);
 	}
 	
 	action void A_SplitDroplet(class<Actor> type, double factor)
 	{
-		if (factor > 1.0)
+		if (factor > 0.5)
 		{
-			factor *= frandom(0.5, 0.8334);
+			factor *= 0.5;
 			for (int i = 0; i < 2; i++)
 			{
 				let droplet = BloodDroplet(Actor.Spawn(type,invoker.pos + (0,0,4)));
 				droplet.final_scale = factor;
 				droplet.scale = (factor, factor) * 0.3333;
-				droplet.vel = invoker.vel + (frandom(-1.0,1.0), frandom(-1.0,1.0), frandom(0.5,1.0));
+				droplet.vel = invoker.vel + (frandom(-2.0,2.0), frandom(-2.0,2.0), frandom(0.0,4.0));
 				droplet.translation = invoker.translation;
 			}
 		}

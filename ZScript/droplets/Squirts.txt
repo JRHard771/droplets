@@ -13,22 +13,7 @@ class BloodSquirt : Droplets replaces Blood
 	States
 	{
 	Spawn:
-		TNT1 A 0 NoDelay A_Jump(256,"Spray");
-		TNT1 A 0 A_Jump(256,"Mid");
-		TNT1 A 0
-		{
-			if (target)
-			{
-				angle = AngleTo(target) + frandom(-45,45);
-				SetOrigin((pos.xy + (target.pos.xy - pos.xy).unit(), pos.z), false);
-			}
-			else
-				angle = frandom(0,360);
-			A_SpawnItemEx("BloodHitPuffSmall",flags: SXF_TRANSFERTRANSLATION,failchance: 128-GetCVar("blood_amt")*64);
-		}
-		stop;
-	Spray:
-		TNT1 A 0
+		TNT1 A 0 NoDelay
 		{
 			if (target)
 			{
@@ -45,7 +30,6 @@ class BloodSquirt : Droplets replaces Blood
 			}
 		}
 		stop;
-	Mid:
 		TNT1 A 0
 		{
 			if (target)
@@ -55,7 +39,19 @@ class BloodSquirt : Droplets replaces Blood
 			}
 			else
 				angle = frandom(0,360);
-			A_SpawnItemEx("BloodHitPuffMid",flags: SXF_TRANSFERTRANSLATION,failchance: 64-GetCVar("blood_amt")*32);
+			A_SpawnItemEx("BloodHitPuffMid",flags: SXF_TRANSFERTRANSLATION);
+		}
+		stop;
+		TNT1 A 0
+		{
+			if (target)
+			{
+				angle = AngleTo(target) + frandom(-45,45);
+				SetOrigin((pos.xy + (target.pos.xy - pos.xy).unit(), pos.z), false);
+			}
+			else
+				angle = frandom(0,360);
+			A_SpawnItemEx("BloodHitPuffSmall",flags: SXF_TRANSFERTRANSLATION);
 		}
 		stop;
 	}
@@ -68,11 +64,11 @@ class BloodHitPuff : Droplets
 	action void A_SpawnDroplet(double drop_size)
 	{
 		double angle = invoker.angle + frandom(-5.0,5.0);
-		double force = invoker.user_force * frandom(0.9,1.1);
-		drop_size *= frandom(0.9,1.1);
-		let droplet = BloodDroplet(Actor.Spawn('BloodDroplet',invoker.pos + (0,0,4)));
+		double force = invoker.user_force * frandom(0.833333,1.166667);
+		drop_size *= frandom(0.833333,1.166667);
+		let droplet = BloodDroplet(Actor.Spawn('BloodDroplet',invoker.pos));
 		droplet.final_scale = drop_size;
-		droplet.scale = (drop_size, drop_size) * 0.3333;
+		droplet.scale = (drop_size, drop_size) * 0.333333;
 		droplet.Vel3DFromAngle(force, angle, invoker.pitch);
 		droplet.translation = invoker.translation;
 	}
@@ -93,8 +89,8 @@ class BloodHitPuff : Droplets
 	Spawn:
 		TNT1 A 0 NoDelay
 		{
-			user_scale = 0.1615;
-			user_force = frandom(6.0,12.0);
+			user_scale = 0.401878;
+			user_force = frandom(12.0,18.0);
 			user_angmom = frandom(3.75, 15.0);
 			pitch = frandom(-67.5,67.5);
 			//A_PlaySound("blood/hit",0,0.3);
@@ -108,31 +104,25 @@ class BloodHitPuff : Droplets
 			switch(GetCVar("blood_amt"))
 			{
 			case 0:
-				A_SpawnDroplet(user_scale * 1.2);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
 				A_SpawnDroplet(user_scale);
 				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 0.8);
+				A_SpawnDroplet(user_scale * 0.5);
 				break;
 			case 1:
-				A_SpawnDroplet(user_scale * 1.6);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.4);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.2);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
 				A_SpawnDroplet(user_scale);
+				angle += frandom(-user_angmom * 0.5, user_angmom);
+				A_SpawnDroplet(user_scale * 0.75);
+				angle += frandom(-user_angmom * 0.5, user_angmom);
+				A_SpawnDroplet(user_scale * 0.5);
 				break;
 			case 2:
-				A_SpawnDroplet(user_scale * 2.0);
+				A_SpawnDroplet(user_scale);
 				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.8);
+				A_SpawnDroplet(user_scale * 0.833333);
 				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.6);
+				A_SpawnDroplet(user_scale * 0.666667);
 				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.4);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.2);
+				A_SpawnDroplet(user_scale * 0.5);
 			}
 			angle += frandom(-user_angmom * 0.5, user_angmom);
 			user_force *= 0.833333;
@@ -150,8 +140,8 @@ class BloodHitPuffMid : BloodHitPuff
 	Spawn:
 		TNT1 A 0 NoDelay
 		{
-			user_scale = 0.1615;
-			user_force = frandom(7.0,14.0);
+			user_scale = 0.401878;
+			user_force = frandom(14.0,21.0);
 			user_angmom = frandom(-10.0,10.0);
 			pitch = frandom(-67.5,67.5);
 			//A_PlaySound("blood/hit",0,0.2);
@@ -164,25 +154,19 @@ class BloodHitPuffMid : BloodHitPuff
 			switch(GetCVar("blood_amt"))
 			{
 			case 0:
-				A_SpawnDroplet(user_scale * 0.8);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 0.6);
+				A_SpawnDroplet(user_scale);
 				break;
 			case 1:
-				A_SpawnDroplet(user_scale * 1.2);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
 				A_SpawnDroplet(user_scale);
 				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 0.8);
+				A_SpawnDroplet(user_scale * 0.5);
 				break;
 			case 2:
-				A_SpawnDroplet(user_scale * 1.6);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.4);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 1.2);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
 				A_SpawnDroplet(user_scale);
+				angle += frandom(-user_angmom * 0.5, user_angmom);
+				A_SpawnDroplet(user_scale * 0.75);
+				angle += frandom(-user_angmom * 0.5, user_angmom);
+				A_SpawnDroplet(user_scale * 0.5);
 			}
 			angle += frandom(-user_angmom * 0.5, user_angmom);
 			user_force *= 0.833333;
@@ -200,8 +184,8 @@ class BloodHitPuffSmall : BloodHitPuff
 	Spawn:
 		TNT1 A 0 NoDelay
 		{
-			user_scale = 0.1615;
-			user_force = frandom(8.0,16.0);
+			user_scale = 0.401878;
+			user_force = frandom(16.0,24.0);
 			user_angmom = frandom(-5.0,5.0);
 			pitch = frandom(-67.5,67.5);
 			//A_PlaySound("blood/hit",0,0.1);
@@ -213,20 +197,13 @@ class BloodHitPuffSmall : BloodHitPuff
 		{
 			switch(GetCVar("blood_amt"))
 			{
-			case 0:
-				A_SpawnDroplet(user_scale * 0.4);
-				break;
 			case 1:
-				A_SpawnDroplet(user_scale * 0.8);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 0.6);
+				A_SpawnDroplet(user_scale);
 				break;
 			case 2:
-				A_SpawnDroplet(user_scale * 1.2);
-				angle += frandom(-user_angmom * 0.5, user_angmom);
 				A_SpawnDroplet(user_scale);
 				angle += frandom(-user_angmom * 0.5, user_angmom);
-				A_SpawnDroplet(user_scale * 0.8);
+				A_SpawnDroplet(user_scale * 0.5);
 			}
 			angle += frandom(-user_angmom * 0.5, user_angmom);
 			user_force *= 0.833333;
