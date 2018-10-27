@@ -14,7 +14,10 @@ class GibletA : Droplets
 	override void BeginPlay()
 	{
 		rollFactor = frandom(-45.0,45.0);
+		roll = frandom(0,360);
 		gravity = blood_grav;
+		scale.x = randompick(-1,1);
+		Super.BeginPlay();
 	}
 	
 	override void Tick()
@@ -55,9 +58,8 @@ class GibletA : Droplets
 		"----" A -1
 		{
 			A_FloorSplat(1.0);
-			bFlatSprite = true;
-			angle = frandom(0,360);
-			pitch = 0;
+			bFORCEXYBILLBOARD = false;
+			frame += 13;
 			roll = 0;
 		}
 		Stop;
