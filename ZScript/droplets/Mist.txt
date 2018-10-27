@@ -1,0 +1,64 @@
+class BloodMist : Actor
+{
+	double rollFactor;
+	Default
+	{
+		+NOINTERACTION
+		+FORCEXYBILLBOARD
+		+ROLLSPRITE
+		RenderStyle "Translucent";
+	}
+	
+	override void BeginPlay()
+	{
+		Super.BeginPlay();
+		scale = (frandompick(-0.2,0.2),frandompick(-0.2,0.2));
+		vel = (AngleToVector(frandom(0,360),frandom(0,0.125)),frandom(-0.125,0.125));
+		roll = frandom(0,360);
+		rollFactor = frandom(-1.285714,1.285714);
+	}
+	
+	override void Tick()
+	{
+		Super.Tick();
+		roll += rollFactor;
+		Fade();
+		if (alpha == 0)
+			Destroy();
+	}
+	
+	virtual void Fade()
+	{
+		if (scale.x < 0) scale.x -= 0.022857;
+		else scale.x += 0.022857;
+		if (scale.y < 0) scale.y -= 0.022857;
+		else scale.y += 0.022857;
+		alpha = max(0, alpha - 0.028571);
+	}
+	
+	States
+	{
+	Spawn:
+		BLPF F 1;
+		Wait;
+	}
+}
+
+class BigBloodMist : BloodMist
+{	
+	override void BeginPlay()
+	{
+		Super.BeginPlay();
+		scale *= 5.0;
+		alpha = 0.5;
+	}
+	
+	override void Fade()
+	{
+		if (scale.x < 0) scale.x -= 0.011429;
+		else scale.x += 0.011429;
+		if (scale.y < 0) scale.y -= 0.011429;
+		else scale.y += 0.011429;
+		alpha = max(0, alpha - 0.001429);
+	}
+}

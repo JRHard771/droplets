@@ -9,5 +9,6 @@ version "3.3"
 #include "ZScript/droplets/Events.txt"
 #include "ZScript/droplets/FloorSplat.txt"
 #include "ZScript/droplets/Wall.txt"
+#include "ZScript/droplets/Mist.txt"
 
 #include "ZScript/droplets/Hideous.txt"

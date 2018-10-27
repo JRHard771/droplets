@@ -28,6 +28,7 @@ class BloodSquirt : Droplets replaces Blood
 				Vector3 v = (AngleToVector(frandom(0,360),frandom(1,4)),frandom(0,4));
 				A_SpawnItemEx("RandGiblet",xvel: v.x,yvel: v.y,zvel: v.z,flags: SXF_TRANSFERTRANSLATION);
 			}
+			A_SpawnItemEx("BloodMist",flags: SXF_TRANSFERTRANSLATION);
 		}
 		stop;
 		TNT1 A 0
@@ -40,6 +41,7 @@ class BloodSquirt : Droplets replaces Blood
 			else
 				angle = frandom(0,360);
 			A_SpawnItemEx("BloodHitPuffMid",flags: SXF_TRANSFERTRANSLATION);
+			A_SpawnItemEx("BloodMist",flags: SXF_TRANSFERTRANSLATION);
 		}
 		stop;
 		TNT1 A 0
