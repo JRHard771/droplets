@@ -21,8 +21,8 @@ OptionMenu "BloodOptions"
 	Slider "Blood Scale", "blood_size", 0.5, 1.5, 0.05, 2
 	Slider "Blood Velocity", "blood_rand", 0.5, 2.0, 0.05, 2
 	StaticText " "
-	Slider "Blood Limit", "sv_corpsequeuesize", 64, 10000, 64, 0
-	Slider "Decal Limit", "cl_maxdecals", 64, 10000, 64, 0
+	Slider "Blood Limit", "sv_corpsequeuesize", 64, 4096, 64, 0
+	Slider "Decal Limit", "cl_maxdecals", 64, 4096, 64, 0
 	StaticText " "
 	Option "Spawn Blood Pools", "blood_pools", "onoff"
 	Option "Spawn Giblets", "blood_gibs", "onoff"
