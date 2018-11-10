@@ -1,11 +1,17 @@
 class BloodFog : Droplets
 {
-	double user_size, user_rot, final_scale;
+	double user_size, user_rot, final_scale, target_alpha;
 	
 	virtual void ReduceFog()
 	{
-		user_size += (final_scale - user_size) / 300;
-		alpha = max(0.0, alpha + (-0.05 - alpha) / 150);
+		user_size += 0.0025 * final_scale;
+		if (alpha < target_alpha)
+			alpha += (target_alpha + 0.1 - alpha)*0.1;
+		else
+		{
+			target_alpha = -1;
+			alpha = max(0.0, alpha + (-0.1 - alpha)*0.01);
+		}
 	}
 	
 	action void A_FogWander()
@@ -32,7 +38,7 @@ class BloodFog : Droplets
 		Speed 0.12;
 		MaxStepHeight 1;
 		RenderStyle "Translucent";
-		Alpha 0.3333;
+		Alpha 0.0;
 	}
 	States
 	{
@@ -40,14 +46,14 @@ class BloodFog : Droplets
 		TNT1 A 0 NoDelay A_QueueCorpse;
 		BFOG A 0
 		{
-			frame = random(0,6);
-			user_size = 0.1;
+			user_size = 0.01 * final_scale;
 			angle = frandom(0,360);
-			user_rot = frandompick(-0.45,0.45) * frandom(0.5,1.0);
+			user_rot = frandompick(-1.29,1.29) * frandom(0.2,1.0);
+			target_alpha = 0.333333;
 		}
 		goto Pool;
 	Pool:
-		BFOG "#" 1 A_FogWander;
+		BFOG A 1 A_FogWander;
 		Loop;
 	}
 }

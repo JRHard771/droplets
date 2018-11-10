@@ -7,7 +7,4 @@ server bool blood_pools = false;
 server bool blood_gibs = false;
 server bool blood_chunky = false;
 server bool blood_alwaysgib = false;
-
-user int cl_drop3_dist = 384;
-user int cl_drop2_dist = 768;
-user int cl_drop1_dist = 1536;
+server bool blood_splash = false;

@@ -96,8 +96,8 @@ class BloodHitPuff : Droplets
 			user_angmom = frandom(3.75, 15.0);
 			pitch = frandom(-67.5,67.5);
 			//A_PlaySound("blood/hit",0,0.3);
-			scale.x = frandom(0.65,0.85);
-			scale.y = 1.5 - scale.x;
+			scale.x = frandom(0.4,0.6);
+			scale.y = 1.0 - scale.x;
 			scale.x *= randompick(1,-1);
 			A_FloorSplat(0.75);
 		}
@@ -147,8 +147,8 @@ class BloodHitPuffMid : BloodHitPuff
 			user_angmom = frandom(-10.0,10.0);
 			pitch = frandom(-67.5,67.5);
 			//A_PlaySound("blood/hit",0,0.2);
-			scale.x = frandom(0.4,0.5);
-			scale.y = 1.0 - scale.x;
+			scale.x = frandom(0.3,0.4);
+			scale.y = 0.7 - scale.x;
 			scale.x *= randompick(1,-1);
 		}
 		BLPF ABCDE 2
@@ -191,8 +191,8 @@ class BloodHitPuffSmall : BloodHitPuff
 			user_angmom = frandom(-5.0,5.0);
 			pitch = frandom(-67.5,67.5);
 			//A_PlaySound("blood/hit",0,0.1);
-			scale.x = frandom(0.15,0.35);
-			scale.y = 0.5 - scale.x;
+			scale.x = frandom(0.175,0.225);
+			scale.y = 0.4 - scale.x;
 			scale.x *= randompick(1,-1);
 		}
 		BLPF ABCDE 2

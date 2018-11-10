@@ -40,8 +40,8 @@ class BloodPool2 : Droplets
 		TNT1 A 0 A_JumpIf(scale_percent < 1.0, "Pool");
 		goto Done;
 	Done:
-		PLUD C -1;
-		Stop;
+		PLUD C 35 {if (!master) Destroy();}
+		Wait;
 	Fog:
 		TNT1 A 0;
 		Stop;

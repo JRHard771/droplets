@@ -28,4 +28,7 @@ OptionMenu "BloodOptions"
 	Option "Spawn Giblets", "blood_gibs", "onoff"
 	Option "Chunky Mode", "blood_chunky", "onoff"
 	Option "Ludicrous Gibs", "blood_alwaysgib", "onoff"
+	Option "Blood Droplets Spatter", "blood_splash", "onoff"
+	StaticText "WARNING: This option can significantly increase the number of"
+	StaticText "blood droplets spawned in-game."
 }

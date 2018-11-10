@@ -61,6 +61,8 @@ class GibletA : Droplets
 			bFORCEXYBILLBOARD = false;
 			frame += 13;
 			roll = 0;
+			if (random(0,2))
+				A_QueueCorpse();
 		}
 		Stop;
 	Bounce:

@@ -35,7 +35,7 @@ class FloorSplat : Droplets
 	Done:
 		"####" "#" 0
 		{
-			if (!random(0,1))
+			if (random(0,2))
 				A_QueueCorpse();
 		}
 		"####" "#" -1;

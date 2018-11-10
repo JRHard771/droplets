@@ -11,4 +11,31 @@ ACTOR C_GreenBloodSquirt : BloodSquirt replaces GreenBlood
 }
 ACTOR C_BloodSplatter : BloodSquirt replaces BloodSplatter {}
 
+// Hideous Destructor compatibility
 ACTOR C_HideousTrail : DropletsTrail replaces HDBloodTrailFloor {}
+
+// Doom Tribute compatibility
+ACTOR C_BlueBlood_LM : BloodSquirt replaces BlueBlood_LM
+{
+	Translation "0:255=%[0,0,0.8]:[0,0,0.8]"
+}
+
+ACTOR C_GreenBlood_LM : BloodSquirt replaces GreenBlood_LM
+{
+	Translation "0:255=%[0,0.78,0]:[0,0.78,0]"
+}
+
+ACTOR C_YellowBlood_LM : BloodSquirt replaces YellowBlood_LM
+{
+	Translation "0:255=%[0.8,0.8,0]:[0.8,0.8,0]"
+}
+
+ACTOR C_OrangeBlood_LM : BloodSquirt replaces OrangeBlood_LM
+{
+	Translation "0:255=%[0.8,0.4,0]:[0.8,0.4,0]"
+}
+
+ACTOR C_BlackBlood_LM : BloodSquirt replaces BlackBlood_LM
+{
+	Translation "0:255=%[0.15,0.1,0.05]:[0.15,0.1,0.05]"
+}
