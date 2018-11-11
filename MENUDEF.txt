@@ -24,6 +24,7 @@ OptionMenu "BloodOptions"
 	Slider "Blood Limit", "sv_corpsequeuesize", 64, 4096, 64, 0
 	Slider "Decal Limit", "cl_maxdecals", 64, 4096, 64, 0
 	StaticText " "
+	Option "Spawn Blood Mist", "blood_mist", "onoff"
 	Option "Spawn Blood Pools", "blood_pools", "onoff"
 	Option "Spawn Giblets", "blood_gibs", "onoff"
 	Option "Chunky Mode", "blood_chunky", "onoff"

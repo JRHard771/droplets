@@ -164,7 +164,7 @@ class BloodDroplet : Droplets
 		DROP A 1 A_WallSplat();
 		Loop;
 	Death:
-		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 A 0 { bWINDTHRUST = false; bMISSILE = false; }
 		TNT1 A 0 A_JumpIf(ceilingz - pos.z < 8.0, "Ceil");
 		TNT1 A 0 {if (blood_splash) A_SplitDroplet('BloodDroplet', scale.x);}
 		TNT1 A 0 A_PlaySound("blood/drip",volume: final_scale * last_vel * 0.0625);
@@ -203,7 +203,7 @@ class DecoDroplet : BloodDroplet
 	States
 	{
 	Death:
-		TNT1 A 0 { bWINDTHRUST = false; }
+		TNT1 A 0 { bWINDTHRUST = false; bMISSILE = false; }
 		TNT1 A 0 {if (blood_splash) A_SplitDroplet('DecoDroplet', scale.x);}
 		TNT1 A 0 A_PlaySound("blood/drip",volume: final_scale * last_vel * 0.0625);
 		TNT1 A 0 A_JumpIf(pos.z > floorz + 8.0, "Wall");

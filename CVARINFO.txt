@@ -8,3 +8,4 @@ server bool blood_gibs = false;
 server bool blood_chunky = false;
 server bool blood_alwaysgib = false;
 server bool blood_splash = false;
+server bool blood_mist = true;
