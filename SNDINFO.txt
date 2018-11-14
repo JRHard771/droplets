@@ -31,3 +31,4 @@ $limit blood/drp7 1 32
 $random blood/drip { blood/drp1 blood/drp2 blood/drp3 blood/drp4 blood/drp5 blood/drp6 blood/drp7 }
 
 $attenuation blood/drip 2.0
+$volume blood/drip 0.25

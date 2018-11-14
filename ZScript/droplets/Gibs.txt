@@ -243,15 +243,18 @@ class GibSpray : Droplets
 		TNT1 A 5;
 		TNT1 A 0
 		{
-			for (int i = 0; i < 2 + blood_amt * 2; i++)
+			if (blood_mist)
 			{
-				Actor mist;
-				if (master)
-					mist = Spawn('BigBloodMist',(pos.xy + AngleToVector(frandom(0,360),frandom(0,master.radius)), pos.z));
-				else
-					mist = Spawn('BigBloodMist',(pos.xy + AngleToVector(frandom(0,360),frandom(0,16)), pos.z));
-				mist.vel += vel * frandom(0.03, 0.06);
-				mist.translation = translation;
+				for (int i = 0; i < 2 + blood_amt * 2; i++)
+				{
+					Actor mist;
+					if (master)
+						mist = Spawn('BigBloodMist',(pos.xy + AngleToVector(frandom(0,360),frandom(0,master.radius)), pos.z));
+					else
+						mist = Spawn('BigBloodMist',(pos.xy + AngleToVector(frandom(0,360),frandom(0,16)), pos.z));
+					mist.vel += vel * frandom(0.03, 0.06);
+					mist.translation = translation;
+				}
 			}
 			A_DropletsGib("GibletA");
 			A_DropletsGib("GibletB");

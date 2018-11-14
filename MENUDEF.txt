@@ -6,7 +6,7 @@ AddOptionMenu "OptionsMenu"
 
 OptionValue "BloodAmount"
 {
-	0, "Mild"
+	0, "Reduced"
 	1, "Normal"
 	2, "Excessive"
 }

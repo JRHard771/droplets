@@ -1,7 +1,7 @@
 server float blood_rand = 1.0;
 server float blood_size = 1.0;
-server float blood_alpha = 0.75;
-server float blood_grav = 1.0;
+server float blood_alpha = 1.0;
+server float blood_grav = 0.75;
 server int blood_amt = 1;
 server bool blood_pools = false;
 server bool blood_gibs = false;
