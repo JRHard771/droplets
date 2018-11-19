@@ -45,6 +45,7 @@ class WallBloodSpot : Droplets
 		TNT1 A 0 NoDelay
 		{
 			A_QueueCorpse();
+			alpha = blood_alpha;
 			let run = RunnySpot(Actor.Spawn('RunnySpot',pos));
 			run.wbs = self;
 			run.user_scale = user_scale;
@@ -89,6 +90,7 @@ class RunnySpot : Droplets
 		TNT1 A 0 NoDelay
 		{
 			A_QueueCorpse();
+			alpha = blood_alpha;
 			frame = random(0,2);
 			scale = (user_scale,0.001);
 			scale.x *= randompick(-1,1);
