@@ -1,6 +1,14 @@
 class BloodPool2 : Droplets
 {
+	Vector2 spawnXY;
 	double scale_percent, final_scale;
+	
+	override void Tick()
+	{
+		Super.Tick();
+		Vector2 offset = AngleToVector((AngleTo(players[consoleplayer].mo)+180)%360,1);
+		SetOrigin((spawnXY + offset, pos.Z), true);
+	}
 	
 	Default
 	{
@@ -27,6 +35,7 @@ class BloodPool2 : Droplets
 		}
 		TNT1 A 0
 		{
+			spawnXY = master.pos.xy;
 			SetOrigin(master.pos, false);
 			final_scale = (master.radius) * 0.05;
 		}

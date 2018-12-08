@@ -1,0 +1,109 @@
+material texture "models/bloodspot/bloodpool.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/bloodpool2.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/bloodpool3.png"
+{
+    normal "materials/normalmaps/bloodpool3.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/bloodpool4.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat1.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat2.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat3.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat4.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat5.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat6.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}
+
+material texture "models/bloodspot/fsplat7.png"
+{
+    normal "materials/normalmaps/normal.png"
+    specular "materials/Specular/spec.png"
+    specularlevel 0.835
+    glossiness 20.0
+	
+    disablefullbright
+}

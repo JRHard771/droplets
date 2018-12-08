@@ -1,16 +1,20 @@
 $pitchshiftrange 3
 
-blood/bh1	bullhit1
-blood/bh2	bullhit2
-blood/bh3	bullhit3
-blood/bh4	bullhit4
+blood/gib1	gib1
+blood/gib2	gib2
+blood/gib3	gib3
+blood/gib4	gib4
+blood/gib5	gib5
 
-$limit blood/bh1 1 128
-$limit blood/bh2 1 128
-$limit blood/bh3 1 128
-$limit blood/bh4 1 128
+$random blood/gib { blood/gib1 blood/gib2 blood/gib3 blood/gib4 blood/gib5 }
 
-$random blood/hit { blood/bh1 blood/bh2 blood/bh3 blood/bh4 }
+blood/bounce1	gibP1
+blood/bounce2	gibP3
+blood/bounce3	gibP4
+blood/bounce4	gibP5
+blood/bounce5	gibP6
+
+$random blood/bounce { blood/bounce1 blood/bounce2 blood/bounce3 blood/bounce4 blood/bounce5 }
 
 blood/drp1	drip1
 blood/drp2	drip2

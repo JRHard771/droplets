@@ -57,6 +57,7 @@ class GibletA : Droplets
 	Death:
 		"----" A -1
 		{
+			A_PlaySound("blood/bounce",volume:0.25);
 			A_FloorSplat(1.0);
 			bFORCEXYBILLBOARD = false;
 			frame += 13;
@@ -66,7 +67,11 @@ class GibletA : Droplets
 		}
 		Stop;
 	Bounce:
-		"----" A 1 { rollFactor *= -0.833333; }
+		"----" A 1
+		{
+			A_PlaySound("blood/bounce",volume:clamp(vel.length()*0.05, 0.25, 1.0));
+			rollFactor *= -0.833333;
+		}
 		"----" A random(7,11) A_Drip;
 		Wait;
 	}
@@ -256,6 +261,7 @@ class GibSpray : Droplets
 					mist.translation = translation;
 				}
 			}
+			A_PlaySound("blood/gib");
 			A_DropletsGib("GibletA");
 			A_DropletsGib("GibletB");
 			A_DropletsGib("GibletC");
