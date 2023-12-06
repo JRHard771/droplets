@@ -13,6 +13,11 @@ ACTOR C_BloodSplatter : BloodSquirt replaces BloodSplatter {}
 
 // Hideous Destructor compatibility
 ACTOR C_HideousTrail : DropletsTrail replaces HDBloodTrailFloor {}
+ACTOR C_HideousSplat : BloodSquirt replaces BloodSplat {}
+ACTOR C_HideousSplatSilent : BloodSquirt replaces BloodSplatSilent {}
+ACTOR C_HideousMegaSplatter : BloodMist replaces MegaBloodSplatter {}
+ACTOR C_HideousMasterBlood : BloodSquirt replaces HDMasterBlood{}
+//CacoShellBlood ???
 
 // Doom Tribute compatibility
 ACTOR C_BlueBlood_LM : BloodSquirt replaces BlueBlood_LM
